@@ -1,0 +1,34 @@
+# Build directories
+build/
+cmake-build-*/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Compiled objects
+*.o
+*.obj
+*.dll
+*.exe
+*.so
+*.dylib
+
+# Logs
+*.log
+
+# MinHook is a submodule, but keep the directory
+# minhook/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# OS
+.DS_Store
+Thumbs.db

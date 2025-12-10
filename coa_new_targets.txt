@@ -1,0 +1,46 @@
+// New target strings for FirstStrike.java
+// Copy these into the TARGETS map
+
+targets.put("accuracy", "Parse_Accuracy");
+targets.put("ammo", "Parse_Ammo");
+targets.put("armor", "Parse_Armor");
+targets.put("bottom", "Parse_Bottom");
+targets.put("brake", "Parse_Brake");
+targets.put("collision", "Parse_Collision");
+targets.put("damage", "Parse_Damage");
+targets.put("detection", "Parse_Detection");
+targets.put("drag", "Parse_Drag");
+targets.put("engine", "Parse_Engine");
+targets.put("experience", "Parse_Experience");
+targets.put("explosive", "Parse_Explosive");
+targets.put("fire", "Parse_Fire");
+targets.put("force", "Parse_Force");
+targets.put("front", "Parse_Front");
+targets.put("fuel", "Parse_Fuel");
+targets.put("gravity", "Parse_Gravity");
+targets.put("health", "Parse_Health");
+targets.put("hull", "Parse_Hull");
+targets.put("mass", "Parse_Mass");
+targets.put("morale", "Parse_Morale");
+targets.put("panic", "Parse_Panic");
+targets.put("penetration", "Parse_Penetration");
+targets.put("range", "Parse_Range");
+targets.put("recoil", "Parse_Recoil");
+targets.put("reload", "Parse_Reload");
+targets.put("rotation", "Parse_Rotation");
+targets.put("side", "Parse_Side");
+targets.put("speed", "Parse_Speed");
+targets.put("spread", "Parse_Spread");
+targets.put("stamina", "Parse_Stamina");
+targets.put("suppression", "Parse_Suppression");
+targets.put("suspension", "Parse_Suspension");
+targets.put("thickness", "Parse_Thickness");
+targets.put("top", "Parse_Top");
+targets.put("transmission", "Parse_Transmission");
+targets.put("turret", "Parse_Turret");
+targets.put("velocity", "Parse_Velocity");
+targets.put("veterancy", "Parse_Veterancy");
+targets.put("visibility", "Parse_Visibility");
+targets.put("weight", "Parse_Weight");
+
+// Total: 41 new strings found

@@ -1,0 +1,380 @@
+# Call to Arms: Script Extender API Reference
+# Hook points for building game mods
+# Each function can be hooked to intercept/modify game behavior
+
+## USAGE:
+## 1. Choose functions you want to hook
+## 2. Use detours library (Microsoft Detours, MinHook, etc.)
+## 3. Hook at the memory addresses listed
+## 4. Modify parameters/return values in your hooks
+
+========================================
+HOOKABLE FUNCTIONS
+========================================
+
+// DAMAGE SYSTEM
+Parse_Damage_Stats = 0x07ddd90
+Parse_Damage_Stats_1407dd640 = 0x07dd640
+Parse_Damage_Stats_140a5bd50 = 0x0a5bd50
+Parse_Damage_Stats_140037a20 = 0x0037a20
+Parse_Damage_Stats_1401f1a30 = 0x01f1a30
+Parse_Damage_Stats_140a62d30 = 0x0a62d30
+Parse_Damage_Stats_14005b046 = 0x005b046
+Parse_Physics_Weight = 0x03eff90
+Parse_Armor_Thickness = 0x0738830
+Parse_Damage_Stats_14008ef90 = 0x008ef90
+Parse_Damage_Stats_140b7f230 = 0x0b7f230
+Parse_Damage_Stats_140bb3900 = 0x0bb3900
+Parse_Damage_Stats_140a0a180 = 0x0a0a180
+Parse_Vehicle_MaxSpeed_140afbbc0 = 0x0afbbc0
+Parse_Damage_Stats_140b7a740 = 0x0b7a740
+
+// EXPLOSIVE SYSTEM
+Parse_Explosive_Stats = 0x073b7d0
+Parse_Explosive_Stats_140966210 = 0x0966210
+
+// RECOIL SYSTEM
+Parse_Weapon_Recoil = 0x095c860
+Parse_Weapon_Recoil_140058720 = 0x0058720
+Parse_Weapon_Recoil_14096cdb0 = 0x096cdb0
+
+// THICKNESS SYSTEM
+Parse_Armor_Thickness = 0x0738830
+
+// FUEL SYSTEM
+Parse_Fuel_System = 0x047a730
+Parse_Fuel_System_1401f3ba0 = 0x01f3ba0
+Parse_Fuel_System_14084fda0 = 0x084fda0
+Parse_Fuel_System_140237800 = 0x0237800
+Parse_Fuel_System_140b455a0 = 0x0b455a0
+Parse_Fuel_System_1403e90c0 = 0x03e90c0
+Parse_Fuel_System_140b48f60 = 0x0b48f60
+
+// MASS SYSTEM
+Parse_Physics_Mass = 0x07202c0
+Parse_Physics_Mass_140b1f5f0 = 0x0b1f5f0
+
+// STAMINA SYSTEM
+Parse_Unit_Veterancy = 0x03b9dd0
+Parse_Unit_Stamina_140358f10 = 0x0358f10
+Parse_Vehicle_MaxSpeed_14098e800 = 0x098e800
+Parse_Unit_Stamina_1401e5340 = 0x01e5340
+
+// ACCURACY SYSTEM
+Parse_Vehicle_MaxSpeed_140afbbc0 = 0x0afbbc0
+Parse_Weapon_Accuracy_1401e3760 = 0x01e3760
+Parse_Weapon_Recoil_14096cdb0 = 0x096cdb0
+Parse_Weapon_Accuracy_1409ffc90 = 0x09ffc90
+Parse_Weapon_Accuracy_14005b026 = 0x005b026
+
+// RANGE SYSTEM
+Parse_Weapon_Range = 0x07bd2c0
+Parse_Vehicle_MaxSpeed_140afbbc0 = 0x0afbbc0
+Parse_Weapon_Range_1401b4c80 = 0x01b4c80
+Parse_Weapon_Range_140b4f1a0 = 0x0b4f1a0
+Parse_Weapon_Range_140b8cb60 = 0x0b8cb60
+Parse_Vehicle_MaxSpeed_14094c5b0 = 0x094c5b0
+Parse_Weapon_Range_1407a07c0 = 0x07a07c0
+Parse_Weapon_Range_1403ec700 = 0x03ec700
+Parse_Physics_Weight = 0x03eff90
+Parse_Weapon_Range_14087e7b0 = 0x087e7b0
+
+// INVENTORY SYSTEM
+Parse_Inventory_Base = 0x0087cc0
+Parse_Inventory_Base_14021a350 = 0x021a350
+Parse_Inventory_Base_140b025f0 = 0x0b025f0
+Parse_Inventory_Base_140b249c0 = 0x0b249c0
+Parse_Inventory_Base_140362bd0 = 0x0362bd0
+Parse_Inventory_Base_140362cf0 = 0x0362cf0
+Parse_Inventory_Base_140362eb0 = 0x0362eb0
+Parse_Inventory_Base_1403a06e0 = 0x03a06e0
+Parse_Inventory_Base_140aff170 = 0x0aff170
+Parse_Inventory_Base_140b370e0 = 0x0b370e0
+Parse_Inventory_Base_1400543d0 = 0x00543d0
+Parse_Unit_Veterancy_140949b50 = 0x0949b50
+Parse_Inventory_Base_1409a6490 = 0x09a6490
+Parse_Inventory_Base_1409a64a0 = 0x09a64a0
+Parse_Inventory_Base_1409e1bf0 = 0x09e1bf0
+Parse_Weapon_Recoil = 0x095c860
+Parse_Inventory_Base_1409d7460 = 0x09d7460
+Parse_Inventory_Base_1409d6ac0 = 0x09d6ac0
+Parse_Inventory_Base_1409a66e0 = 0x09a66e0
+Parse_Inventory_Base_1409cd540 = 0x09cd540
+Parse_Inventory_Base_1409cd940 = 0x09cd940
+Parse_Inventory_Base_1409cfd60 = 0x09cfd60
+Parse_Inventory_Base_140087fa0 = 0x0087fa0
+Parse_Inventory_Base_140b266a0 = 0x0b266a0
+Parse_Inventory_Base_140b27a70 = 0x0b27a70
+Parse_Inventory_Base_140b25a80 = 0x0b25a80
+
+// EXPERIENCE SYSTEM
+Parse_Unit_Experience = 0x0208670
+
+// SPEED SYSTEM
+Parse_Vehicle_MaxSpeed = 0x0b341f0
+Parse_Vehicle_MaxSpeed_14099f970 = 0x099f970
+Parse_Vehicle_MaxSpeed_140afbbc0 = 0x0afbbc0
+Parse_Vehicle_MaxSpeed_140657440 = 0x0657440
+Parse_Vehicle_MaxSpeed_1406576f0 = 0x06576f0
+Parse_Vehicle_MaxSpeed_140196c50 = 0x0196c50
+Parse_Vehicle_MaxSpeed_140c16190 = 0x0c16190
+Parse_Vehicle_MaxSpeed_1402d4310 = 0x02d4310
+Parse_Vehicle_MaxSpeed_1402d3870 = 0x02d3870
+Parse_Fuel_System_1401f3ba0 = 0x01f3ba0
+Parse_Vehicle_MaxSpeed_1403b0d80 = 0x03b0d80
+Parse_Vehicle_MaxSpeed_140b4f950 = 0x0b4f950
+Parse_Vehicle_MaxSpeed_14078faa0 = 0x078faa0
+Parse_Vehicle_MaxSpeed_140b4fd60 = 0x0b4fd60
+Parse_Vehicle_MaxSpeed_14098e800 = 0x098e800
+Parse_Vehicle_MaxSpeed_14094c5b0 = 0x094c5b0
+Parse_Vehicle_MaxSpeed_140beb890 = 0x0beb890
+Parse_Vehicle_MaxSpeed_14084b770 = 0x084b770
+Parse_Vehicle_MaxSpeed_1405c88c0 = 0x05c88c0
+Parse_Vehicle_MaxSpeed_1407253a0 = 0x07253a0
+Parse_Fuel_System_140237800 = 0x0237800
+Parse_Vehicle_MaxSpeed_140a3ed90 = 0x0a3ed90
+
+// RELOAD SYSTEM
+Parse_Reload_Time = 0x0239b50
+Parse_Physics_Weight = 0x03eff90
+Parse_Weapon_Recoil = 0x095c860
+Parse_Fire_Mode_14091b240 = 0x091b240
+Parse_Reload_Time_1407d9450 = 0x07d9450
+Parse_Reload_Time_1400373f0 = 0x00373f0
+Parse_Reload_Time_140953570 = 0x0953570
+Parse_Reload_Time_1407e4b10 = 0x07e4b10
+Parse_Reload_Time_140800250 = 0x0800250
+Parse_Reload_Time_14003ebc0 = 0x003ebc0
+Parse_Reload_Time_14093f430 = 0x093f430
+Parse_Reload_Time_14093a7d0 = 0x093a7d0
+Parse_Vehicle_MaxSpeed_140afbbc0 = 0x0afbbc0
+
+// TOP SYSTEM
+Parse_Top_Armor = 0x0742c90
+Parse_Top_Armor_140131a70 = 0x0131a70
+Parse_Top_Armor_14028f830 = 0x028f830
+Parse_Bottom_Armor_14046b100 = 0x046b100
+Parse_Bottom_Armor_14046a810 = 0x046a810
+Parse_Bottom_Armor_140383e20 = 0x0383e20
+Parse_Bottom_Armor_14007e770 = 0x007e770
+Parse_Bottom_Armor_14007e960 = 0x007e960
+Parse_Bottom_Armor_14007ea40 = 0x007ea40
+Parse_Top_Armor_1403a5060 = 0x03a5060
+Parse_Top_Armor_1403a4290 = 0x03a4290
+Parse_Top_Armor_1403a3ac0 = 0x03a3ac0
+Parse_Top_Armor_1403a3b50 = 0x03a3b50
+Parse_Top_Armor_1403a3120 = 0x03a3120
+Parse_Top_Armor_140b831f0 = 0x0b831f0
+Parse_Top_Armor_1403a2070 = 0x03a2070
+Parse_Top_Armor_1403a1830 = 0x03a1830
+Parse_Top_Armor_1403a1f90 = 0x03a1f90
+Parse_Top_Armor_1403a15b0 = 0x03a15b0
+Parse_Top_Armor_1403a1610 = 0x03a1610
+Parse_Top_Armor_14007cff0 = 0x007cff0
+Parse_Top_Armor_140a68d90 = 0x0a68d90
+Parse_Top_Armor_140a72b30 = 0x0a72b30
+Parse_Top_Armor_14049d0d0 = 0x049d0d0
+Parse_Top_Armor_140787110 = 0x0787110
+Parse_Top_Armor_140a71e90 = 0x0a71e90
+
+// ENGINE SYSTEM
+Parse_Engine_Stats = 0x01cc990
+Parse_Engine_Stats_14000ff00 = 0x000ff00
+Parse_Engine_Stats_14068df80 = 0x068df80
+Parse_Engine_Stats_14005fd50 = 0x005fd50
+Parse_Brake_System_1407573e0 = 0x07573e0
+Parse_Engine_Stats_140835aa0 = 0x0835aa0
+Parse_Engine_Stats_140048690 = 0x0048690
+Parse_Engine_Stats_140759f60 = 0x0759f60
+
+// SUPPRESSION SYSTEM
+Parse_Suppression_System = 0x0b5f980
+
+// FIRE SYSTEM
+Parse_Fire_Mode = 0x091f3f0
+Parse_Fire_Mode_14091ebb0 = 0x091ebb0
+Parse_Fire_Mode_14091e060 = 0x091e060
+Parse_Fire_Mode_14091e270 = 0x091e270
+Parse_Fire_Mode_14091e350 = 0x091e350
+Parse_Fire_Mode_14099e6f0 = 0x099e6f0
+Parse_Fire_Mode_14091b240 = 0x091b240
+Parse_Brake_System_1407573e0 = 0x07573e0
+Parse_Fire_Mode_1409955b0 = 0x09955b0
+Parse_Fire_Mode_1409956b0 = 0x09956b0
+Parse_Fire_Mode_140b33bc0 = 0x0b33bc0
+Parse_Fire_Mode_1407519f0 = 0x07519f0
+Parse_Fire_Mode_140751980 = 0x0751980
+Parse_Fire_Mode_14074d690 = 0x074d690
+Parse_Fire_Mode_14080b200 = 0x080b200
+Parse_Fire_Mode_14080ae50 = 0x080ae50
+Parse_Explosive_Stats_140966210 = 0x0966210
+Parse_Fire_Mode_14075a120 = 0x075a120
+Parse_Fire_Mode_14080ddb0 = 0x080ddb0
+Parse_Fire_Mode_1408f9620 = 0x08f9620
+Parse_Vehicle_MaxSpeed_14098e800 = 0x098e800
+Parse_Fire_Mode_140b33d90 = 0x0b33d90
+
+// DRAG SYSTEM
+Parse_Physics_Drag = 0x00e82c0
+Parse_Physics_Drag_140007a60 = 0x0007a60
+Parse_Physics_Drag_140148340 = 0x0148340
+Parse_Physics_Drag_140007960 = 0x0007960
+Parse_Physics_Drag_140148500 = 0x0148500
+Parse_Physics_Drag_140326700 = 0x0326700
+
+// SUSPENSION SYSTEM
+Parse_Suspension_System = 0x0855080
+
+// SIDE SYSTEM
+Parse_Side_Armor = 0x005c646
+Parse_Side_Armor_140a57570 = 0x0a57570
+Parse_Side_Armor_140bed380 = 0x0bed380
+Parse_Side_Armor_1409e9a50 = 0x09e9a50
+Parse_Side_Armor_1409e9a10 = 0x09e9a10
+Parse_Side_Armor_140c262b0 = 0x0c262b0
+
+// DETECTION SYSTEM
+Parse_Detection_Range = 0x09e1520
+
+// AMMO SYSTEM
+Parse_Ammo_System = 0x0191020
+Parse_Ammo_System_14018b030 = 0x018b030
+Parse_Ammo_System_140106af0 = 0x0106af0
+Parse_Ammo_System_140106fb0 = 0x0106fb0
+Parse_Ammo_System_1400e6110 = 0x00e6110
+Parse_Ammo_System_1401065f0 = 0x01065f0
+Parse_Ammo_System_140106680 = 0x0106680
+Parse_Ammo_System_140105df0 = 0x0105df0
+Parse_Ammo_System_140105060 = 0x0105060
+Parse_Ammo_System_140105110 = 0x0105110
+Parse_Ammo_System_140105310 = 0x0105310
+Parse_Ammo_System_1401055f0 = 0x01055f0
+Parse_Ammo_System_1401056d0 = 0x01056d0
+Parse_Ammo_System_1401fddd0 = 0x01fddd0
+Parse_Ammo_System_14042bea0 = 0x042bea0
+Parse_Vehicle_MaxSpeed_140afbbc0 = 0x0afbbc0
+Parse_Ammo_System_140053580 = 0x0053580
+Parse_Ammo_System_1400577d0 = 0x00577d0
+Parse_Ammo_System_140b00580 = 0x0b00580
+Parse_Ammo_System_140b1f9f0 = 0x0b1f9f0
+Parse_Ammo_System_140b352d0 = 0x0b352d0
+Parse_Ammo_System_140b609e0 = 0x0b609e0
+Parse_Ammo_System_140b60ee0 = 0x0b60ee0
+
+// VISIBILITY SYSTEM
+Parse_Visibility_System = 0x00382e0
+Parse_Visibility_System_140637360 = 0x0637360
+Parse_Visibility_System_140636670 = 0x0636670
+
+// BOTTOM SYSTEM
+Parse_Bottom_Armor = 0x021a190
+Parse_Bottom_Armor_14046b100 = 0x046b100
+Parse_Bottom_Armor_14046a810 = 0x046a810
+Parse_Bottom_Armor_140383e20 = 0x0383e20
+Parse_Bottom_Armor_14007e770 = 0x007e770
+Parse_Bottom_Armor_14007e960 = 0x007e960
+Parse_Bottom_Armor_14007ea40 = 0x007ea40
+
+// ROTATION SYSTEM
+Parse_Rotation_Speed = 0x01b3230
+
+// TURRET SYSTEM
+Parse_Turret_System = 0x005fef0
+Parse_Turret_System_140048d80 = 0x0048d80
+Parse_Turret_System_14005ff20 = 0x005ff20
+
+// HEALTH SYSTEM
+Parse_Unit_Stamina_140358f10 = 0x0358f10
+Parse_Vehicle_MaxSpeed_14098e800 = 0x098e800
+Parse_Unit_Health_140a4a5c0 = 0x0a4a5c0
+Parse_Unit_Health_140a4a620 = 0x0a4a620
+Parse_Unit_Health_140889370 = 0x0889370
+Parse_Unit_Health_140a495b0 = 0x0a495b0
+Parse_Unit_Stamina_1401e5340 = 0x01e5340
+Parse_Unit_Health_140a63bc0 = 0x0a63bc0
+Parse_Unit_Health_140a63c30 = 0x0a63c30
+Parse_Unit_Health_140a63150 = 0x0a63150
+Parse_Unit_Health_140a63570 = 0x0a63570
+Parse_Unit_Veterancy = 0x03b9dd0
+Parse_Physics_Weight = 0x03eff90
+Parse_Unit_Health_14071bf10 = 0x071bf10
+Parse_Unit_Veterancy_140b3c360 = 0x0b3c360
+
+// WEIGHT SYSTEM
+Parse_Physics_Weight = 0x03eff90
+Parse_Physics_Weight_140055de6 = 0x0055de6
+Parse_Physics_Weight_140070606 = 0x0070606
+
+// MAX_SPEED SYSTEM
+Parse_Fuel_System_1403e90c0 = 0x03e90c0
+Parse_Armor_Values_140b47820 = 0x0b47820
+Parse_Vehicle_MaxSpeed_14098e800 = 0x098e800
+
+// SPREAD SYSTEM
+Parse_Weapon_Spread = 0x0055e00
+
+// PANIC SYSTEM
+Parse_Panic_System = 0x0971500
+
+// BRAKE SYSTEM
+Parse_Brake_System = 0x07599b0
+Parse_Brake_System_1407573e0 = 0x07573e0
+Parse_Brake_System_14084b8a0 = 0x084b8a0
+
+// ARMOR SYSTEM
+Parse_Fuel_System_1403e90c0 = 0x03e90c0
+Parse_Armor_Values_140b47820 = 0x0b47820
+Parse_Armor_Values_140048390 = 0x0048390
+Parse_Armor_Values_1409fd220 = 0x09fd220
+Parse_Armor_Values_1409fd420 = 0x09fd420
+Parse_Armor_Values_140048360 = 0x0048360
+Parse_Armor_Values_1407c6b20 = 0x07c6b20
+Parse_Armor_Values_1409ffcb0 = 0x09ffcb0
+Parse_Armor_Values_1407c62a0 = 0x07c62a0
+Parse_Unit_Health_140889370 = 0x0889370
+Parse_Armor_Values_140885680 = 0x0885680
+Parse_Unit_Veterancy_140949b50 = 0x0949b50
+Parse_Armor_Values_1400a2100 = 0x00a2100
+Parse_Armor_Values_1400a0710 = 0x00a0710
+
+// VETERANCY SYSTEM
+Parse_Unit_Veterancy = 0x03b9dd0
+Parse_Unit_Veterancy_1401865d0 = 0x01865d0
+Parse_Unit_Veterancy_140358990 = 0x0358990
+Parse_Vehicle_MaxSpeed_14098e800 = 0x098e800
+Parse_Unit_Veterancy_140949b50 = 0x0949b50
+Parse_Unit_Veterancy_1401ef7e0 = 0x01ef7e0
+Parse_Unit_Veterancy_1401e0980 = 0x01e0980
+Parse_Unit_Veterancy_140b3c360 = 0x0b3c360
+Parse_Unit_Veterancy_140c3c350 = 0x0c3c350
+
+// FORCE SYSTEM
+Parse_Physics_Force = 0x0195d70
+Parse_Physics_Force_140736b90 = 0x0736b90
+Parse_Physics_Force_1407366d0 = 0x07366d0
+Parse_Physics_Force_140483d20 = 0x0483d20
+Parse_Physics_Force_140a4b9e0 = 0x0a4b9e0
+
+// FRONT SYSTEM
+Parse_Front_Armor = 0x0737290
+Parse_Front_Armor_1407518a0 = 0x07518a0
+Parse_Front_Armor_140751900 = 0x0751900
+Parse_Front_Armor_14074cd90 = 0x074cd90
+Parse_Front_Armor_1400a1ff0 = 0x00a1ff0
+Parse_Front_Armor_1400a0dd0 = 0x00a0dd0
+Parse_Front_Armor_140caa990 = 0x0caa990
+Parse_Front_Armor_140d03720 = 0x0d03720
+
+========================================
+TOTAL HOOKABLE FUNCTIONS: 281
+========================================
+
+## EXAMPLE: Hook weapon damage
+##
+## typedef void (*ParseDamage_t)(void*, void*, void*, void**);
+## ParseDamage_t Original_ParseDamage = (ParseDamage_t)0xADDRESS;
+##
+## void Hook_ParseDamage(void* p1, void* p2, void* p3, void** p4) {
+##     Original_ParseDamage(p1, p2, p3, p4);
+##     // Modify damage values here
+## }

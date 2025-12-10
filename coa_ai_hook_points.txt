@@ -1,0 +1,282 @@
+# AI Overhaul Mod - Critical Hook Points
+# Hook these functions to replace game AI with your own
+
+========================================
+PRIORITY HOOKS FOR AI OVERHAUL
+========================================
+
+## PATHFINDING (HIGHEST PRIORITY)
+# These control how units move from A to B
+AI_Pathfinding = 0x07e81b0
+AI_Pathfinding_140831b60 = 0x0831b60
+AI_Pathfinding_1408a3210 = 0x08a3210
+AI_Pathfinding_1408bc210 = 0x08bc210
+AI_Pathfinding_140a15730 = 0x0a15730
+AI_Sensing = 0x0afbbc0
+AI_Pathfinding_140d86050 = 0x0d86050
+AI_Pathfinding_140d85330 = 0x0d85330
+AI_Waypoint_System = 0x0b7fdb0
+AI_Squad_Behavior_1409bd1f0 = 0x09bd1f0
+AI_Waypoint_System_14019d7c0 = 0x019d7c0
+AI_Waypoint_System_1409b7de0 = 0x09b7de0
+AI_Waypoint_System_140195b60 = 0x0195b60
+AI_Movement_Controller = 0x0195d70
+AI_Squad_Behavior_1409f43b0 = 0x09f43b0
+AI_Waypoint_System_1401938c0 = 0x01938c0
+AI_Squad_Behavior_1409f3fb0 = 0x09f3fb0
+AI_Target_Selection_140991f90 = 0x0991f90
+AI_Waypoint_System_1407913e0 = 0x07913e0
+AI_Waypoint_System_140b0ed70 = 0x0b0ed70
+AI_Waypoint_System_1409cc900 = 0x09cc900
+AI_Waypoint_System_1409c9ab0 = 0x09c9ab0
+AI_Waypoint_System_1409c9a20 = 0x09c9a20
+AI_Waypoint_System_1409c9f50 = 0x09c9f50
+AI_Waypoint_System_1409c9220 = 0x09c9220
+AI_Waypoint_System_1409a9530 = 0x09a9530
+AI_Waypoint_System_1409c8980 = 0x09c8980
+AI_Waypoint_System_1409c8a80 = 0x09c8a80
+AI_Waypoint_System_1409c85b0 = 0x09c85b0
+AI_Waypoint_System_1409c8500 = 0x09c8500
+AI_Waypoint_System_1409c86a0 = 0x09c86a0
+AI_State_Machine_140a05a40 = 0x0a05a40
+AI_Waypoint_System_1401a2600 = 0x01a2600
+AI_Waypoint_System_1401a10c0 = 0x01a10c0
+AI_Waypoint_System_1400a1700 = 0x00a1700
+AI_Waypoint_System_1401a1090 = 0x01a1090
+AI_Waypoint_System_1401a10a0 = 0x01a10a0
+AI_Waypoint_System_140988f90 = 0x0988f90
+AI_Waypoint_System_1408f6700 = 0x08f6700
+AI_Task_System_1409832f0 = 0x09832f0
+AI_Waypoint_System_140984c00 = 0x0984c00
+AI_Waypoint_System_140986910 = 0x0986910
+AI_Waypoint_System_1409e98e0 = 0x09e98e0
+# Found 43 pathfinding functions
+
+## AI UPDATE/TICK (HIGH PRIORITY)
+# These run every frame - main AI loop
+AI_Update = 0x02419f0
+AI_Update_1407ae500 = 0x07ae500
+AI_Update_1409452c0 = 0x09452c0
+# Found 3 update functions
+
+## BEHAVIOR/STATE (HIGH PRIORITY)
+# These control AI decision making
+AI_State_Machine = 0x00a7830
+AI_State_Machine_1400a7890 = 0x00a7890
+AI_State_Machine_1400a7020 = 0x00a7020
+AI_State_Machine_1400a7110 = 0x00a7110
+AI_State_Machine_1400a7490 = 0x00a7490
+AI_State_Machine_1400a7500 = 0x00a7500
+AI_State_Machine_1400a7570 = 0x00a7570
+AI_State_Machine_1400a6f30 = 0x00a6f30
+AI_Update = 0x02419f0
+AI_Team_Coordination_1409d20b0 = 0x09d20b0
+AI_Team_Coordination_1409d2ad0 = 0x09d2ad0
+AI_Target_Selection_1407fdaa0 = 0x07fdaa0
+AI_Driver_System_14091b240 = 0x091b240
+AI_State_Machine_1409d7280 = 0x09d7280
+AI_State_Machine_1407d6220 = 0x07d6220
+AI_Squad_Behavior_1409f43b0 = 0x09f43b0
+AI_Squad_Behavior_1409f3fb0 = 0x09f3fb0
+AI_State_Machine_140991910 = 0x0991910
+AI_State_Machine_1409d1010 = 0x09d1010
+AI_Team_Coordination_1409f0ff0 = 0x09f0ff0
+AI_State_Machine_1407ef0d0 = 0x07ef0d0
+AI_State_Machine_1409aec80 = 0x09aec80
+AI_Team_Coordination_140c28d20 = 0x0c28d20
+AI_State_Machine_1409e86b0 = 0x09e86b0
+AI_Team_Coordination_140c27440 = 0x0c27440
+AI_State_Machine_140366250 = 0x0366250
+AI_State_Machine_140a05a40 = 0x0a05a40
+AI_State_Machine_1400a0b00 = 0x00a0b00
+AI_State_Machine_1409d8530 = 0x09d8530
+AI_State_Machine_140057dc6 = 0x0057dc6
+AI_State_Machine_1408f9bc0 = 0x08f9bc0
+# Found 31 behavior functions
+
+## MOVEMENT CONTROLLERS (MEDIUM PRIORITY)
+# Infantry and vehicle movement logic
+AI_Driver_System = 0x004f3b0
+AI_Driver_System_14004f2f0 = 0x004f2f0
+AI_Driver_System_14004f320 = 0x004f320
+AI_Driver_System_14004f350 = 0x004f350
+AI_Driver_System_14004f380 = 0x004f380
+AI_Driver_System_14091b240 = 0x091b240
+AI_Vehicle_Controller = 0x022fba0
+AI_Vehicle_Controller_14018d0c0 = 0x018d0c0
+AI_Vehicle_Controller_1401f1400 = 0x01f1400
+AI_Vehicle_Controller_140b47040 = 0x0b47040
+AI_Vehicle_Controller_1401e47e0 = 0x01e47e0
+AI_Vehicle_Controller_140010250 = 0x0010250
+AI_Vehicle_Controller_1401f4ec0 = 0x01f4ec0
+AI_Objective_Handler_140bb3900 = 0x0bb3900
+AI_Objective_Handler_140bb4c20 = 0x0bb4c20
+AI_Sensing = 0x0afbbc0
+AI_Vehicle_Controller_1401f3ba0 = 0x01f3ba0
+AI_Vehicle_Controller_140237800 = 0x0237800
+AI_Vehicle_Controller_140b455a0 = 0x0b455a0
+AI_Vehicle_Controller_1402388e0 = 0x02388e0
+AI_Vehicle_Controller_140b467c0 = 0x0b467c0
+AI_Vehicle_Controller_140b46470 = 0x0b46470
+AI_Vehicle_Controller_14097f4b0 = 0x097f4b0
+AI_Vehicle_Controller_14087e7b0 = 0x087e7b0
+AI_Vehicle_Controller_140358f10 = 0x0358f10
+AI_Vehicle_Controller_140b53780 = 0x0b53780
+AI_Enemy_Tracking_1409114d0 = 0x09114d0
+AI_Vehicle_Controller_14096b560 = 0x096b560
+AI_Vehicle_Controller_140048de0 = 0x0048de0
+AI_Vehicle_Controller_140487160 = 0x0487160
+AI_Vehicle_Controller_140a45890 = 0x0a45890
+AI_Vehicle_Controller_1409a14d0 = 0x09a14d0
+AI_Vehicle_Controller_1400a15e0 = 0x00a15e0
+AI_Vehicle_Controller_1409e0640 = 0x09e0640
+AI_Vehicle_Controller_140029b00 = 0x0029b00
+AI_Vehicle_Controller_140a4a5c0 = 0x0a4a5c0
+AI_Vehicle_Controller_140a4a620 = 0x0a4a620
+AI_Vehicle_Controller_140a495b0 = 0x0a495b0
+AI_Vehicle_Controller_140b30bc0 = 0x0b30bc0
+AI_Vehicle_Controller_140b34650 = 0x0b34650
+AI_Vehicle_Controller_140b348e0 = 0x0b348e0
+AI_Vehicle_Controller_140b34ba0 = 0x0b34ba0
+AI_Vehicle_Controller_140b36130 = 0x0b36130
+AI_Vehicle_Controller_140b365e0 = 0x0b365e0
+AI_Vehicle_Controller_140b474d0 = 0x0b474d0
+AI_Vehicle_Controller_140b47820 = 0x0b47820
+AI_Movement_Controller = 0x0195d70
+AI_Movement_System = 0x09bd710
+AI_Movement_System_14098e800 = 0x098e800
+AI_Movement_System_140a4b220 = 0x0a4b220
+AI_Movement_System_140a4b300 = 0x0a4b300
+AI_Movement_System_1409eab30 = 0x09eab30
+AI_Movement_System_1405c88c0 = 0x05c88c0
+AI_Movement_System_1407a78e0 = 0x07a78e0
+AI_Movement_System_1407a7a20 = 0x07a7a20
+AI_Movement_System_1407a7bb0 = 0x07a7bb0
+AI_Movement_Controller_140718630 = 0x0718630
+AI_Team_Coordination_1409d2ad0 = 0x09d2ad0
+AI_Team_Coordination_1409d20b0 = 0x09d20b0
+AI_Movement_System_1409d84e0 = 0x09d84e0
+AI_Movement_Controller_14075a8e0 = 0x075a8e0
+AI_Movement_System_14075aaa0 = 0x075aaa0
+AI_Movement_Controller_14091f3f0 = 0x091f3f0
+AI_Movement_Controller_14091e860 = 0x091e860
+AI_Movement_Controller_14091ea90 = 0x091ea90
+AI_Movement_Controller_14091ebb0 = 0x091ebb0
+AI_Movement_Controller_14091e060 = 0x091e060
+AI_Movement_Controller_14091e100 = 0x091e100
+AI_Movement_Controller_14091e270 = 0x091e270
+AI_Movement_Controller_14091e350 = 0x091e350
+AI_Movement_Controller_14091e5c0 = 0x091e5c0
+AI_Movement_Controller_14099e6f0 = 0x099e6f0
+AI_Movement_Controller_14091e7d0 = 0x091e7d0
+AI_Movement_Controller_14099c270 = 0x099c270
+AI_Driver_System_14091b240 = 0x091b240
+AI_Movement_Controller_140b5af70 = 0x0b5af70
+AI_Movement_Controller_140999ee0 = 0x0999ee0
+AI_Movement_Controller_140999f70 = 0x0999f70
+AI_Movement_Controller_1400584b0 = 0x00584b0
+AI_Movement_Controller_140998700 = 0x0998700
+AI_Movement_System_1407573e0 = 0x07573e0
+AI_Movement_Controller_1409955b0 = 0x09955b0
+AI_Movement_Controller_1409956b0 = 0x09956b0
+AI_Movement_Controller_140993c70 = 0x0993c70
+AI_Movement_Controller_140b33f70 = 0x0b33f70
+AI_Movement_Controller_1407519f0 = 0x07519f0
+AI_Movement_Controller_140751980 = 0x0751980
+AI_Movement_Controller_1407f0cd0 = 0x07f0cd0
+AI_Movement_Controller_14074d690 = 0x074d690
+AI_Enemy_Tracking_1408c27a0 = 0x08c27a0
+AI_Movement_Controller_1408f9620 = 0x08f9620
+AI_Movement_System_140913970 = 0x0913970
+AI_Movement_Controller_140939320 = 0x0939320
+AI_Movement_Controller_14093a7d0 = 0x093a7d0
+AI_Movement_Controller_1409461c0 = 0x09461c0
+AI_Movement_Controller_14095c860 = 0x095c860
+AI_Movement_Controller_140b34140 = 0x0b34140
+AI_Movement_System = 0x09bd710
+AI_Movement_System_14098e800 = 0x098e800
+AI_Movement_System_140a4b220 = 0x0a4b220
+AI_Movement_System_140a4b300 = 0x0a4b300
+AI_Movement_System_1409eab30 = 0x09eab30
+AI_Movement_System_1405c88c0 = 0x05c88c0
+AI_Movement_System_1407a78e0 = 0x07a78e0
+AI_Movement_System_1407a7a20 = 0x07a7a20
+AI_Movement_System_1407a7bb0 = 0x07a7bb0
+AI_Team_Coordination_1409d2ad0 = 0x09d2ad0
+AI_Team_Coordination_1409d20b0 = 0x09d20b0
+AI_Movement_System_1409d84e0 = 0x09d84e0
+AI_Movement_System_14075aaa0 = 0x075aaa0
+AI_Movement_System_1407573e0 = 0x07573e0
+AI_Movement_System_140913970 = 0x0913970
+# Found 112 movement functions
+
+## TACTICAL AI (MEDIUM PRIORITY)
+# Combat decisions, target selection
+AI_Cover_System = 0x0194200
+AI_Cover_System_14087faf0 = 0x087faf0
+AI_Cover_System_14087ff80 = 0x087ff80
+AI_Cover_System_14087f6a0 = 0x087f6a0
+AI_Vehicle_Controller_14087e7b0 = 0x087e7b0
+AI_Cover_System_140b5b070 = 0x0b5b070
+AI_Cover_System_140057fd0 = 0x0057fd0
+AI_Team_Coordination_1409d2ad0 = 0x09d2ad0
+AI_Team_Coordination_1409d20b0 = 0x09d20b0
+AI_Vehicle_Controller_14096b560 = 0x096b560
+AI_Cover_System_1409d84a0 = 0x09d84a0
+AI_Cover_System_140060296 = 0x0060296
+AI_Cover_System_14088bd80 = 0x088bd80
+AI_Cover_System_14088c640 = 0x088c640
+AI_Cover_System_140892e70 = 0x0892e70
+AI_Cover_System_1409397e0 = 0x09397e0
+AI_Cover_System_14093a040 = 0x093a040
+AI_Cover_System_1409472a0 = 0x09472a0
+AI_Movement_Controller_1409461c0 = 0x09461c0
+AI_Cover_System_14006c320 = 0x006c320
+AI_Cover_System_14006c2f0 = 0x006c2f0
+AI_Cover_System_14006d100 = 0x006d100
+AI_Cover_System_14006d130 = 0x006d130
+AI_Cover_System_14006d160 = 0x006d160
+AI_Combat_System = 0x00a0b90
+AI_Formation_System = 0x00e4ef0
+AI_Attack_Behavior = 0x0b5fa50
+AI_Driver_System_14091b240 = 0x091b240
+AI_Defense_Behavior = 0x00d5c90
+AI_Attack_Behavior_1401952e0 = 0x01952e0
+AI_Defense_Behavior_1400d5550 = 0x00d5550
+AI_Enemy_Tracking_140cee250 = 0x0cee250
+AI_Detection_System_140867e90 = 0x0867e90
+AI_Defense_Behavior_1400e6110 = 0x00e6110
+AI_Attack_Behavior_140943230 = 0x0943230
+AI_Enemy_Tracking = 0x00ef1f0
+AI_Vehicle_Controller_14018d0c0 = 0x018d0c0
+AI_Movement_Controller = 0x0195d70
+AI_Defense_Behavior_140389490 = 0x0389490
+AI_Defense_Behavior_1403862a0 = 0x03862a0
+AI_Defense_Behavior_140386390 = 0x0386390
+AI_Defense_Behavior_1403858c0 = 0x03858c0
+AI_Defense_Behavior_140385970 = 0x0385970
+AI_Attack_Behavior_140806000 = 0x0806000
+AI_Attack_Behavior_140938920 = 0x0938920
+AI_Attack_Behavior_14097f690 = 0x097f690
+AI_Attack_Behavior_140b4abf0 = 0x0b4abf0
+AI_Attack_Behavior_140b5fb50 = 0x0b5fb50
+AI_Attack_Behavior_140b5fbd0 = 0x0b5fbd0
+AI_Sensing = 0x0afbbc0
+AI_Target_Selection_140b7a740 = 0x0b7a740
+AI_Target_Selection_140991f90 = 0x0991f90
+AI_Target_Selection_140048c90 = 0x0048c90
+AI_Target_Selection_1409a17a0 = 0x09a17a0
+AI_Target_Selection_14008b7c6 = 0x008b7c6
+AI_Target_Selection_1407fdaa0 = 0x07fdaa0
+# Found 56 tactical functions
+
+========================================
+TOTAL AI HOOKS AVAILABLE: 245
+========================================
+
+## IMPLEMENTATION STRATEGY:
+## 1. Start by hooking AI_Update/AI_Tick functions
+## 2. Hook pathfinding to control movement
+## 3. Hook behavior/state for decision making
+## 4. Hook movement controllers for vehicle/infantry
+## 5. Hook tactical AI for combat improvements

@@ -1,0 +1,789 @@
+# Call to Arms: AI & Pathfinding Functions
+# These are the systems that control unit behavior and movement
+
+========================================
+PATHFINDING SYSTEMS
+========================================
+
+String: 'path'
+  Functions found: 8
+  -> AI_Pathfinding @ 1407e81b0
+  -> AI_Pathfinding_140831b60 @ 140831b60
+  -> AI_Pathfinding_1408a3210 @ 1408a3210
+  -> AI_Pathfinding_1408bc210 @ 1408bc210
+  -> AI_Pathfinding_140a15730 @ 140a15730
+  -> AI_Sensing @ 140afbbc0
+  -> AI_Pathfinding_140d86050 @ 140d86050
+  -> AI_Pathfinding_140d85330 @ 140d85330
+
+String: 'obstacle'
+  Functions found: 8
+  -> AI_Obstacle_Avoidance @ 140719b60
+  -> AI_Obstacle_Avoidance_140718c00 @ 140718c00
+  -> AI_Obstacle_Avoidance_1408bc8e0 @ 1408bc8e0
+  -> AI_Obstacle_Avoidance_1407b8b30 @ 1407b8b30
+  -> AI_Obstacle_Avoidance_1407202c0 @ 1407202c0
+  -> AI_Driver_System_14091b240 @ 14091b240
+  -> AI_Obstacle_Avoidance_140971500 @ 140971500
+  -> AI_Obstacle_Avoidance_1408a76b0 @ 1408a76b0
+
+String: 'navigate'
+  -> NOT FOUND
+
+String: 'avoidance'
+  -> NOT FOUND
+
+String: 'route'
+  -> NOT FOUND
+
+String: 'pathfinding'
+  -> NOT FOUND
+
+String: 'waypoint'
+  Functions found: 35
+  -> AI_Waypoint_System @ 140b7fdb0
+  -> AI_Squad_Behavior_1409bd1f0 @ 1409bd1f0
+  -> AI_Waypoint_System_14019d7c0 @ 14019d7c0
+  -> AI_Waypoint_System_1409b7de0 @ 1409b7de0
+  -> AI_Waypoint_System_140195b60 @ 140195b60
+  -> AI_Movement_Controller @ 140195d70
+  -> AI_Squad_Behavior_1409f43b0 @ 1409f43b0
+  -> AI_Waypoint_System_1401938c0 @ 1401938c0
+  -> AI_Squad_Behavior_1409f3fb0 @ 1409f3fb0
+  -> AI_Target_Selection_140991f90 @ 140991f90
+  -> AI_Waypoint_System_1407913e0 @ 1407913e0
+  -> AI_Waypoint_System_140b0ed70 @ 140b0ed70
+  -> AI_Waypoint_System_1409cc900 @ 1409cc900
+  -> AI_Waypoint_System_1409c9ab0 @ 1409c9ab0
+  -> AI_Waypoint_System_1409c9a20 @ 1409c9a20
+  -> AI_Waypoint_System_1409c9f50 @ 1409c9f50
+  -> AI_Waypoint_System_1409c9220 @ 1409c9220
+  -> AI_Waypoint_System_1409a9530 @ 1409a9530
+  -> AI_Waypoint_System_1409c8980 @ 1409c8980
+  -> AI_Waypoint_System_1409c8a80 @ 1409c8a80
+  -> AI_Waypoint_System_1409c85b0 @ 1409c85b0
+  -> AI_Waypoint_System_1409c8500 @ 1409c8500
+  -> AI_Waypoint_System_1409c86a0 @ 1409c86a0
+  -> AI_State_Machine_140a05a40 @ 140a05a40
+  -> AI_Waypoint_System_1401a2600 @ 1401a2600
+  -> AI_Waypoint_System_1401a10c0 @ 1401a10c0
+  -> AI_Waypoint_System_1400a1700 @ 1400a1700
+  -> AI_Waypoint_System_1401a1090 @ 1401a1090
+  -> AI_Waypoint_System_1401a10a0 @ 1401a10a0
+  -> AI_Waypoint_System_140988f90 @ 140988f90
+  -> AI_Waypoint_System_1408f6700 @ 1408f6700
+  -> AI_Task_System_1409832f0 @ 1409832f0
+  -> AI_Waypoint_System_140984c00 @ 140984c00
+  -> AI_Waypoint_System_140986910 @ 140986910
+  -> AI_Waypoint_System_1409e98e0 @ 1409e98e0
+
+String: 'pathfind'
+  -> NOT FOUND
+
+String: 'steering'
+  -> NOT FOUND
+
+========================================
+AI DECISION MAKING
+========================================
+
+String: 'state'
+  Functions found: 31
+  -> AI_State_Machine @ 1400a7830
+  -> AI_State_Machine_1400a7890 @ 1400a7890
+  -> AI_State_Machine_1400a7020 @ 1400a7020
+  -> AI_State_Machine_1400a7110 @ 1400a7110
+  -> AI_State_Machine_1400a7490 @ 1400a7490
+  -> AI_State_Machine_1400a7500 @ 1400a7500
+  -> AI_State_Machine_1400a7570 @ 1400a7570
+  -> AI_State_Machine_1400a6f30 @ 1400a6f30
+  -> AI_Update @ 1402419f0
+  -> AI_Team_Coordination_1409d20b0 @ 1409d20b0
+  -> AI_Team_Coordination_1409d2ad0 @ 1409d2ad0
+  -> AI_Target_Selection_1407fdaa0 @ 1407fdaa0
+  -> AI_Driver_System_14091b240 @ 14091b240
+  -> AI_State_Machine_1409d7280 @ 1409d7280
+  -> AI_State_Machine_1407d6220 @ 1407d6220
+  -> AI_Squad_Behavior_1409f43b0 @ 1409f43b0
+  -> AI_Squad_Behavior_1409f3fb0 @ 1409f3fb0
+  -> AI_State_Machine_140991910 @ 140991910
+  -> AI_State_Machine_1409d1010 @ 1409d1010
+  -> AI_Team_Coordination_1409f0ff0 @ 1409f0ff0
+  -> AI_State_Machine_1407ef0d0 @ 1407ef0d0
+  -> AI_State_Machine_1409aec80 @ 1409aec80
+  -> AI_Team_Coordination_140c28d20 @ 140c28d20
+  -> AI_State_Machine_1409e86b0 @ 1409e86b0
+  -> AI_Team_Coordination_140c27440 @ 140c27440
+  -> AI_State_Machine_140366250 @ 140366250
+  -> AI_State_Machine_140a05a40 @ 140a05a40
+  -> AI_State_Machine_1400a0b00 @ 1400a0b00
+  -> AI_State_Machine_1409d8530 @ 1409d8530
+  -> AI_State_Machine_140057dc6 @ 140057dc6
+  -> AI_State_Machine_1408f9bc0 @ 1408f9bc0
+
+String: 'ai'
+  Functions found: 63
+  -> AI_Controller @ 140191020
+  -> AI_Controller_14018b030 @ 14018b030
+  -> AI_Controller_140106fb0 @ 140106fb0
+  -> AI_Controller_140105060 @ 140105060
+  -> AI_Controller_140105110 @ 140105110
+  -> AI_Controller_1401055f0 @ 1401055f0
+  -> AI_Controller_1401056d0 @ 1401056d0
+  -> AI_Controller_1400061a0 @ 1400061a0
+  -> AI_Controller_140111800 @ 140111800
+  -> AI_Enemy_Tracking_140107a90 @ 140107a90
+  -> AI_Controller_14012f0b0 @ 14012f0b0
+  -> AI_Controller_14016fb90 @ 14016fb90
+  -> AI_Controller_14000bda0 @ 14000bda0
+  -> AI_Controller_1401801f0 @ 1401801f0
+  -> AI_Controller_1408cd330 @ 1408cd330
+  -> AI_Controller_140195d50 @ 140195d50
+  -> AI_Controller_140195d60 @ 140195d60
+  -> AI_Controller_140af08f0 @ 140af08f0
+  -> AI_Controller_140b4bfc0 @ 140b4bfc0
+  -> AI_Controller_1401a9a00 @ 1401a9a00
+  -> AI_Controller_1402269b0 @ 1402269b0
+  -> AI_Controller_1400a06b0 @ 1400a06b0
+  -> AI_Controller_140a32cf0 @ 140a32cf0
+  -> AI_Controller_1400104c0 @ 1400104c0
+  -> AI_Controller_140765e90 @ 140765e90
+  -> AI_Controller_140a40e00 @ 140a40e00
+  -> AI_Team_Coordination @ 140216b60
+  -> AI_Controller_14022c300 @ 14022c300
+  -> AI_Controller_1403da8a0 @ 1403da8a0
+  -> AI_Controller_140448390 @ 140448390
+  -> AI_Controller_140483d20 @ 140483d20
+  -> AI_Controller_14049cc30 @ 14049cc30
+  -> AI_Controller_140037426 @ 140037426
+  -> AI_Controller_1400378e0 @ 1400378e0
+  -> AI_Movement_System_14098e800 @ 14098e800
+  -> AI_Controller_140037920 @ 140037920
+  -> AI_Controller_1406f5970 @ 1406f5970
+  -> AI_Controller_14005d010 @ 14005d010
+  -> AI_Controller_140839210 @ 140839210
+  -> AI_Controller_140979310 @ 140979310
+  -> AI_Enemy_Tracking_1409114d0 @ 1409114d0
+  -> AI_Controller_1400482d0 @ 1400482d0
+  -> AI_Controller_140810710 @ 140810710
+  -> AI_Controller_1409fd220 @ 1409fd220
+  -> AI_Controller_1409fd420 @ 1409fd420
+  -> AI_Controller_14081b750 @ 14081b750
+  -> AI_Controller_14096cdb0 @ 14096cdb0
+  -> AI_Controller_1409ffca0 @ 1409ffca0
+  -> AI_Controller_140836e40 @ 140836e40
+  -> AI_Movement_Controller_1408f9620 @ 1408f9620
+  -> AI_Controller_140b5f860 @ 140b5f860
+  -> AI_Controller_140966210 @ 140966210
+  -> AI_Driver_System_14091b240 @ 14091b240
+  -> AI_Controller_140928850 @ 140928850
+  -> AI_Controller_14093af10 @ 14093af10
+  -> AI_Controller_140951300 @ 140951300
+  -> AI_Movement_Controller_14095c860 @ 14095c860
+  -> AI_Controller_14096a8e0 @ 14096a8e0
+  -> AI_Controller_14098fe90 @ 14098fe90
+  -> AI_Controller_14098fea0 @ 14098fea0
+  -> AI_Sensing @ 140afbbc0
+  -> AI_Controller_140b4fd60 @ 140b4fd60
+  -> AI_Controller_140c40cb0 @ 140c40cb0
+
+String: 'tick'
+  -> NOT FOUND
+
+String: 'fsm'
+  Functions found: 4
+  -> AI_FSM @ 140037b20
+  -> AI_FSM_140780650 @ 140780650
+  -> AI_FSM_1407f27a0 @ 1407f27a0
+  -> AI_FSM_140956dc0 @ 140956dc0
+
+String: 'update'
+  Functions found: 3
+  -> AI_Update @ 1402419f0
+  -> AI_Update_1407ae500 @ 1407ae500
+  -> AI_Update_1409452c0 @ 1409452c0
+
+String: 'behavior'
+  -> NOT FOUND
+
+String: 'think'
+  -> NOT FOUND
+
+String: 'decision'
+  -> NOT FOUND
+
+========================================
+TACTICAL AI
+========================================
+
+String: 'cover'
+  Functions found: 24
+  -> AI_Cover_System @ 140194200
+  -> AI_Cover_System_14087faf0 @ 14087faf0
+  -> AI_Cover_System_14087ff80 @ 14087ff80
+  -> AI_Cover_System_14087f6a0 @ 14087f6a0
+  -> AI_Vehicle_Controller_14087e7b0 @ 14087e7b0
+  -> AI_Cover_System_140b5b070 @ 140b5b070
+  -> AI_Cover_System_140057fd0 @ 140057fd0
+  -> AI_Team_Coordination_1409d2ad0 @ 1409d2ad0
+  -> AI_Team_Coordination_1409d20b0 @ 1409d20b0
+  -> AI_Vehicle_Controller_14096b560 @ 14096b560
+  -> AI_Cover_System_1409d84a0 @ 1409d84a0
+  -> AI_Cover_System_140060296 @ 140060296
+  -> AI_Cover_System_14088bd80 @ 14088bd80
+  -> AI_Cover_System_14088c640 @ 14088c640
+  -> AI_Cover_System_140892e70 @ 140892e70
+  -> AI_Cover_System_1409397e0 @ 1409397e0
+  -> AI_Cover_System_14093a040 @ 14093a040
+  -> AI_Cover_System_1409472a0 @ 1409472a0
+  -> AI_Movement_Controller_1409461c0 @ 1409461c0
+  -> AI_Cover_System_14006c320 @ 14006c320
+  -> AI_Cover_System_14006c2f0 @ 14006c2f0
+  -> AI_Cover_System_14006d100 @ 14006d100
+  -> AI_Cover_System_14006d130 @ 14006d130
+  -> AI_Cover_System_14006d160 @ 14006d160
+
+String: 'flank'
+  -> NOT FOUND
+
+String: 'order'
+  Functions found: 14
+  -> AI_Team_Coordination_14041da50 @ 14041da50
+  -> AI_Team_Coordination_140c184d0 @ 140c184d0
+  -> AI_Order_Processing_140037ea0 @ 140037ea0
+  -> AI_Team_Coordination_140797110 @ 140797110
+  -> AI_Group_Behavior_140d15540 @ 140d15540
+  -> AI_Order_Processing_140454ac0 @ 140454ac0
+  -> AI_Team_Coordination_1409d2ad0 @ 1409d2ad0
+  -> AI_Team_Coordination_1409d20b0 @ 1409d20b0
+  -> AI_Order_Processing_140702da0 @ 140702da0
+  -> AI_Order_Processing_1409d84f0 @ 1409d84f0
+  -> AI_Order_Processing_1408027b0 @ 1408027b0
+  -> AI_Order_Processing_14099ea20 @ 14099ea20
+  -> AI_Order_Processing_14099d7d0 @ 14099d7d0
+  -> AI_Order_Processing_14099d700 @ 14099d700
+
+String: 'retreat'
+  Functions found: 4
+  -> AI_Movement_Controller_1409461c0 @ 1409461c0
+  -> AI_Retreat_Logic_140caa990 @ 140caa990
+  -> AI_Retreat_Logic_140932ea0 @ 140932ea0
+  -> AI_Movement_System_14098e800 @ 14098e800
+
+String: 'squad'
+  Functions found: 49
+  -> AI_Squad_Behavior @ 1400101d0
+  -> AI_Squad_Behavior_14000fc10 @ 14000fc10
+  -> AI_Squad_Behavior_1401f0a60 @ 1401f0a60
+  -> AI_Objective_Handler_140bb3900 @ 140bb3900
+  -> AI_Objective_Handler_140bb4c20 @ 140bb4c20
+  -> AI_Sensing @ 140afbbc0
+  -> AI_Squad_Behavior_1401ef190 @ 1401ef190
+  -> AI_Squad_Behavior_14028b6e0 @ 14028b6e0
+  -> AI_Squad_Behavior_14028e9a0 @ 14028e9a0
+  -> AI_Squad_Behavior_140027a60 @ 140027a60
+  -> AI_Squad_Behavior_140326700 @ 140326700
+  -> AI_Squad_Behavior_140a0a180 @ 140a0a180
+  -> AI_Squad_Behavior_140924620 @ 140924620
+  -> AI_Team_Coordination_1403a06e0 @ 1403a06e0
+  -> AI_Squad_Behavior_14051f280 @ 14051f280
+  -> AI_Squad_Behavior_14052e390 @ 14052e390
+  -> AI_Squad_Behavior_1409cd540 @ 1409cd540
+  -> AI_Squad_Behavior_1409cd940 @ 1409cd940
+  -> AI_Squad_Behavior_1409bec40 @ 1409bec40
+  -> AI_Squad_Behavior_1409bd1f0 @ 1409bd1f0
+  -> AI_Movement_System @ 1409bd710
+  -> AI_Squad_Behavior_140cb4000 @ 140cb4000
+  -> AI_Squad_Behavior_1409f43b0 @ 1409f43b0
+  -> AI_Squad_Behavior_1409f3fb0 @ 1409f3fb0
+  -> AI_Squad_Behavior_14098d820 @ 14098d820
+  -> AI_Squad_Behavior_14098d3d0 @ 14098d3d0
+  -> AI_Squad_Behavior_14098d340 @ 14098d340
+  -> AI_Squad_Behavior_14098d5c0 @ 14098d5c0
+  -> AI_Squad_Behavior_14098c850 @ 14098c850
+  -> AI_Squad_Behavior_14098c9b0 @ 14098c9b0
+  -> AI_Squad_Behavior_14098c900 @ 14098c900
+  -> AI_Squad_Behavior_14098cb20 @ 14098cb20
+  -> AI_Threat_Assessment_140b8cb60 @ 140b8cb60
+  -> AI_Squad_Behavior_14098cc00 @ 14098cc00
+  -> AI_Squad_Behavior_14098cf40 @ 14098cf40
+  -> AI_Squad_Behavior_14098c280 @ 14098c280
+  -> AI_Squad_Behavior_1409cfd80 @ 1409cfd80
+  -> AI_Squad_Behavior_1409bf140 @ 1409bf140
+  -> AI_Squad_Behavior_1409bf170 @ 1409bf170
+  -> AI_Squad_Behavior_1409bcfd0 @ 1409bcfd0
+  -> AI_Squad_Behavior_1409bcfe0 @ 1409bcfe0
+  -> AI_Squad_Behavior_1409bd5d0 @ 1409bd5d0
+  -> AI_Squad_Behavior_1409bd5e0 @ 1409bd5e0
+  -> AI_Squad_Behavior_1409bddf0 @ 1409bddf0
+  -> AI_Squad_Behavior_1409bde00 @ 1409bde00
+  -> AI_Squad_Behavior_1409beb10 @ 1409beb10
+  -> AI_Squad_Behavior_1409beb20 @ 1409beb20
+  -> AI_Squad_Behavior_140b35700 @ 140b35700
+  -> AI_Group_Behavior_140d15540 @ 140d15540
+
+String: 'combat'
+  Functions found: 1
+  -> AI_Combat_System @ 1400a0b90
+
+String: 'formation'
+  Functions found: 1
+  -> AI_Formation_System @ 1400e4ef0
+
+String: 'defend'
+  Functions found: 15
+  -> AI_Defense_Behavior @ 1400d5c90
+  -> AI_Defense_Behavior_1400d5550 @ 1400d5550
+  -> AI_Enemy_Tracking_140cee250 @ 140cee250
+  -> AI_Defense_Behavior_1400e6110 @ 1400e6110
+  -> AI_Enemy_Tracking_1408c27a0 @ 1408c27a0
+  -> AI_Defense_Behavior_140389490 @ 140389490
+  -> AI_Defense_Behavior_140388a10 @ 140388a10
+  -> AI_Defense_Behavior_140388070 @ 140388070
+  -> AI_Defense_Behavior_140388110 @ 140388110
+  -> AI_Defense_Behavior_1403873a0 @ 1403873a0
+  -> AI_Defense_Behavior_1403862a0 @ 1403862a0
+  -> AI_Defense_Behavior_140386390 @ 140386390
+  -> AI_Defense_Behavior_1403858c0 @ 1403858c0
+  -> AI_Defense_Behavior_140385970 @ 140385970
+  -> AI_Defense_Behavior_140385da0 @ 140385da0
+
+String: 'attack'
+  Functions found: 23
+  -> AI_Attack_Behavior @ 140b5fa50
+  -> AI_Driver_System_14091b240 @ 14091b240
+  -> AI_Defense_Behavior @ 1400d5c90
+  -> AI_Attack_Behavior_1401952e0 @ 1401952e0
+  -> AI_Defense_Behavior_1400d5550 @ 1400d5550
+  -> AI_Enemy_Tracking_140cee250 @ 140cee250
+  -> AI_Detection_System_140867e90 @ 140867e90
+  -> AI_Defense_Behavior_1400e6110 @ 1400e6110
+  -> AI_Attack_Behavior_140943230 @ 140943230
+  -> AI_Enemy_Tracking @ 1400ef1f0
+  -> AI_Vehicle_Controller_14018d0c0 @ 14018d0c0
+  -> AI_Movement_Controller @ 140195d70
+  -> AI_Defense_Behavior_140389490 @ 140389490
+  -> AI_Defense_Behavior_1403862a0 @ 1403862a0
+  -> AI_Defense_Behavior_140386390 @ 140386390
+  -> AI_Defense_Behavior_1403858c0 @ 1403858c0
+  -> AI_Defense_Behavior_140385970 @ 140385970
+  -> AI_Attack_Behavior_140806000 @ 140806000
+  -> AI_Attack_Behavior_140938920 @ 140938920
+  -> AI_Attack_Behavior_14097f690 @ 14097f690
+  -> AI_Attack_Behavior_140b4abf0 @ 140b4abf0
+  -> AI_Attack_Behavior_140b5fb50 @ 140b5fb50
+  -> AI_Attack_Behavior_140b5fbd0 @ 140b5fbd0
+
+String: 'command'
+  Functions found: 8
+  -> AI_Command_System @ 1401975b0
+  -> AI_Command_System_1402107e0 @ 1402107e0
+  -> AI_Command_System_14004f2c0 @ 14004f2c0
+  -> AI_Command_System_140b2b6b0 @ 140b2b6b0
+  -> AI_Command_System_140922040 @ 140922040
+  -> AI_Command_System_140070506 @ 140070506
+  -> AI_Command_System_1409b6c50 @ 1409b6c50
+  -> AI_Command_System_140c169c0 @ 140c169c0
+
+String: 'target'
+  Functions found: 7
+  -> AI_Sensing @ 140afbbc0
+  -> AI_Target_Selection_140b7a740 @ 140b7a740
+  -> AI_Target_Selection_140991f90 @ 140991f90
+  -> AI_Target_Selection_140048c90 @ 140048c90
+  -> AI_Target_Selection_1409a17a0 @ 1409a17a0
+  -> AI_Target_Selection_14008b7c6 @ 14008b7c6
+  -> AI_Target_Selection_1407fdaa0 @ 1407fdaa0
+
+========================================
+MOVEMENT AI
+========================================
+
+String: 'run'
+  Functions found: 27
+  -> AI_Run_Behavior @ 1403b9dd0
+  -> AI_Run_Behavior_140737290 @ 140737290
+  -> AI_Run_Behavior_14006f310 @ 14006f310
+  -> AI_Run_Behavior_14006dd90 @ 14006dd90
+  -> AI_Run_Behavior_14006d2e0 @ 14006d2e0
+  -> AI_Run_Behavior_14006ddf0 @ 14006ddf0
+  -> AI_Run_Behavior_14006de20 @ 14006de20
+  -> AI_Run_Behavior_14006deb0 @ 14006deb0
+  -> AI_Run_Behavior_14006de50 @ 14006de50
+  -> AI_Run_Behavior_14006de80 @ 14006de80
+  -> AI_Run_Behavior_14006dfd0 @ 14006dfd0
+  -> AI_Run_Behavior_14006df70 @ 14006df70
+  -> AI_Run_Behavior_14006e030 @ 14006e030
+  -> AI_Run_Behavior_14006dfa0 @ 14006dfa0
+  -> AI_Run_Behavior_14006e000 @ 14006e000
+  -> AI_Run_Behavior_14006dcd0 @ 14006dcd0
+  -> AI_Run_Behavior_14006dca0 @ 14006dca0
+  -> AI_Run_Behavior_14006dd00 @ 14006dd00
+  -> AI_Run_Behavior_14006dc70 @ 14006dc70
+  -> AI_Run_Behavior_14006dd60 @ 14006dd60
+  -> AI_Run_Behavior_14006dd30 @ 14006dd30
+  -> AI_Run_Behavior_14006df10 @ 14006df10
+  -> AI_Run_Behavior_14006dee0 @ 14006dee0
+  -> AI_Run_Behavior_14006ddc0 @ 14006ddc0
+  -> AI_Run_Behavior_14006e060 @ 14006e060
+  -> AI_Run_Behavior_14006df40 @ 14006df40
+  -> AI_Run_Behavior_140d7d1a0 @ 140d7d1a0
+
+String: 'driver'
+  Functions found: 6
+  -> AI_Driver_System @ 14004f3b0
+  -> AI_Driver_System_14004f2f0 @ 14004f2f0
+  -> AI_Driver_System_14004f320 @ 14004f320
+  -> AI_Driver_System_14004f350 @ 14004f350
+  -> AI_Driver_System_14004f380 @ 14004f380
+  -> AI_Driver_System_14091b240 @ 14091b240
+
+String: 'locomotion'
+  -> NOT FOUND
+
+String: 'infantry'
+  -> NOT FOUND
+
+String: 'vehicle'
+  Functions found: 40
+  -> AI_Vehicle_Controller @ 14022fba0
+  -> AI_Vehicle_Controller_14018d0c0 @ 14018d0c0
+  -> AI_Vehicle_Controller_1401f1400 @ 1401f1400
+  -> AI_Vehicle_Controller_140b47040 @ 140b47040
+  -> AI_Vehicle_Controller_1401e47e0 @ 1401e47e0
+  -> AI_Vehicle_Controller_140010250 @ 140010250
+  -> AI_Vehicle_Controller_1401f4ec0 @ 1401f4ec0
+  -> AI_Objective_Handler_140bb3900 @ 140bb3900
+  -> AI_Objective_Handler_140bb4c20 @ 140bb4c20
+  -> AI_Sensing @ 140afbbc0
+  -> AI_Vehicle_Controller_1401f3ba0 @ 1401f3ba0
+  -> AI_Vehicle_Controller_140237800 @ 140237800
+  -> AI_Vehicle_Controller_140b455a0 @ 140b455a0
+  -> AI_Vehicle_Controller_1402388e0 @ 1402388e0
+  -> AI_Vehicle_Controller_140b467c0 @ 140b467c0
+  -> AI_Vehicle_Controller_140b46470 @ 140b46470
+  -> AI_Vehicle_Controller_14097f4b0 @ 14097f4b0
+  -> AI_Vehicle_Controller_14087e7b0 @ 14087e7b0
+  -> AI_Vehicle_Controller_140358f10 @ 140358f10
+  -> AI_Vehicle_Controller_140b53780 @ 140b53780
+  -> AI_Enemy_Tracking_1409114d0 @ 1409114d0
+  -> AI_Vehicle_Controller_14096b560 @ 14096b560
+  -> AI_Vehicle_Controller_140048de0 @ 140048de0
+  -> AI_Vehicle_Controller_140487160 @ 140487160
+  -> AI_Vehicle_Controller_140a45890 @ 140a45890
+  -> AI_Vehicle_Controller_1409a14d0 @ 1409a14d0
+  -> AI_Vehicle_Controller_1400a15e0 @ 1400a15e0
+  -> AI_Vehicle_Controller_1409e0640 @ 1409e0640
+  -> AI_Vehicle_Controller_140029b00 @ 140029b00
+  -> AI_Vehicle_Controller_140a4a5c0 @ 140a4a5c0
+  -> AI_Vehicle_Controller_140a4a620 @ 140a4a620
+  -> AI_Vehicle_Controller_140a495b0 @ 140a495b0
+  -> AI_Vehicle_Controller_140b30bc0 @ 140b30bc0
+  -> AI_Vehicle_Controller_140b34650 @ 140b34650
+  -> AI_Vehicle_Controller_140b348e0 @ 140b348e0
+  -> AI_Vehicle_Controller_140b34ba0 @ 140b34ba0
+  -> AI_Vehicle_Controller_140b36130 @ 140b36130
+  -> AI_Vehicle_Controller_140b365e0 @ 140b365e0
+  -> AI_Vehicle_Controller_140b474d0 @ 140b474d0
+  -> AI_Vehicle_Controller_140b47820 @ 140b47820
+
+String: 'move'
+  Functions found: 51
+  -> AI_Movement_Controller @ 140195d70
+  -> AI_Movement_System @ 1409bd710
+  -> AI_Movement_System_14098e800 @ 14098e800
+  -> AI_Movement_System_140a4b220 @ 140a4b220
+  -> AI_Movement_System_140a4b300 @ 140a4b300
+  -> AI_Movement_System_1409eab30 @ 1409eab30
+  -> AI_Movement_System_1405c88c0 @ 1405c88c0
+  -> AI_Movement_System_1407a78e0 @ 1407a78e0
+  -> AI_Movement_System_1407a7a20 @ 1407a7a20
+  -> AI_Movement_System_1407a7bb0 @ 1407a7bb0
+  -> AI_Movement_Controller_140718630 @ 140718630
+  -> AI_Team_Coordination_1409d2ad0 @ 1409d2ad0
+  -> AI_Team_Coordination_1409d20b0 @ 1409d20b0
+  -> AI_Movement_System_1409d84e0 @ 1409d84e0
+  -> AI_Movement_Controller_14075a8e0 @ 14075a8e0
+  -> AI_Movement_System_14075aaa0 @ 14075aaa0
+  -> AI_Movement_Controller_14091f3f0 @ 14091f3f0
+  -> AI_Movement_Controller_14091e860 @ 14091e860
+  -> AI_Movement_Controller_14091ea90 @ 14091ea90
+  -> AI_Movement_Controller_14091ebb0 @ 14091ebb0
+  -> AI_Movement_Controller_14091e060 @ 14091e060
+  -> AI_Movement_Controller_14091e100 @ 14091e100
+  -> AI_Movement_Controller_14091e270 @ 14091e270
+  -> AI_Movement_Controller_14091e350 @ 14091e350
+  -> AI_Movement_Controller_14091e5c0 @ 14091e5c0
+  -> AI_Movement_Controller_14099e6f0 @ 14099e6f0
+  -> AI_Movement_Controller_14091e7d0 @ 14091e7d0
+  -> AI_Movement_Controller_14099c270 @ 14099c270
+  -> AI_Driver_System_14091b240 @ 14091b240
+  -> AI_Movement_Controller_140b5af70 @ 140b5af70
+  -> AI_Movement_Controller_140999ee0 @ 140999ee0
+  -> AI_Movement_Controller_140999f70 @ 140999f70
+  -> AI_Movement_Controller_1400584b0 @ 1400584b0
+  -> AI_Movement_Controller_140998700 @ 140998700
+  -> AI_Movement_System_1407573e0 @ 1407573e0
+  -> AI_Movement_Controller_1409955b0 @ 1409955b0
+  -> AI_Movement_Controller_1409956b0 @ 1409956b0
+  -> AI_Movement_Controller_140993c70 @ 140993c70
+  -> AI_Movement_Controller_140b33f70 @ 140b33f70
+  -> AI_Movement_Controller_1407519f0 @ 1407519f0
+  -> AI_Movement_Controller_140751980 @ 140751980
+  -> AI_Movement_Controller_1407f0cd0 @ 1407f0cd0
+  -> AI_Movement_Controller_14074d690 @ 14074d690
+  -> AI_Enemy_Tracking_1408c27a0 @ 1408c27a0
+  -> AI_Movement_Controller_1408f9620 @ 1408f9620
+  -> AI_Movement_System_140913970 @ 140913970
+  -> AI_Movement_Controller_140939320 @ 140939320
+  -> AI_Movement_Controller_14093a7d0 @ 14093a7d0
+  -> AI_Movement_Controller_1409461c0 @ 1409461c0
+  -> AI_Movement_Controller_14095c860 @ 14095c860
+  -> AI_Movement_Controller_140b34140 @ 140b34140
+
+String: 'movement'
+  Functions found: 15
+  -> AI_Movement_System @ 1409bd710
+  -> AI_Movement_System_14098e800 @ 14098e800
+  -> AI_Movement_System_140a4b220 @ 140a4b220
+  -> AI_Movement_System_140a4b300 @ 140a4b300
+  -> AI_Movement_System_1409eab30 @ 1409eab30
+  -> AI_Movement_System_1405c88c0 @ 1405c88c0
+  -> AI_Movement_System_1407a78e0 @ 1407a78e0
+  -> AI_Movement_System_1407a7a20 @ 1407a7a20
+  -> AI_Movement_System_1407a7bb0 @ 1407a7bb0
+  -> AI_Team_Coordination_1409d2ad0 @ 1409d2ad0
+  -> AI_Team_Coordination_1409d20b0 @ 1409d20b0
+  -> AI_Movement_System_1409d84e0 @ 1409d84e0
+  -> AI_Movement_System_14075aaa0 @ 14075aaa0
+  -> AI_Movement_System_1407573e0 @ 1407573e0
+  -> AI_Movement_System_140913970 @ 140913970
+
+String: 'walk'
+  Functions found: 40
+  -> AI_Walk_Behavior @ 140788780
+  -> AI_Walk_Behavior_140784610 @ 140784610
+  -> AI_Walk_Behavior_140971d60 @ 140971d60
+  -> AI_Walk_Behavior_14006f340 @ 14006f340
+  -> AI_Walk_Behavior_140962410 @ 140962410
+  -> AI_Walk_Behavior_1409402e0 @ 1409402e0
+  -> AI_Walk_Behavior_140940680 @ 140940680
+  -> AI_Walk_Behavior_14006e150 @ 14006e150
+  -> AI_Walk_Behavior_14006d910 @ 14006d910
+  -> AI_Walk_Behavior_14006d940 @ 14006d940
+  -> AI_Walk_Behavior_14006e0c0 @ 14006e0c0
+  -> AI_Walk_Behavior_14006e0f0 @ 14006e0f0
+  -> AI_Walk_Behavior_14006e120 @ 14006e120
+  -> AI_Walk_Behavior_14006e660 @ 14006e660
+  -> AI_Walk_Behavior_14006e180 @ 14006e180
+  -> AI_Walk_Behavior_14006e1b0 @ 14006e1b0
+  -> AI_Walk_Behavior_14006e420 @ 14006e420
+  -> AI_Walk_Behavior_14006e510 @ 14006e510
+  -> AI_Walk_Behavior_14006e540 @ 14006e540
+  -> AI_Walk_Behavior_14006e450 @ 14006e450
+  -> AI_Walk_Behavior_14006e570 @ 14006e570
+  -> AI_Walk_Behavior_14006e480 @ 14006e480
+  -> AI_Walk_Behavior_14006e3c0 @ 14006e3c0
+  -> AI_Walk_Behavior_14006e3f0 @ 14006e3f0
+  -> AI_Walk_Behavior_14006e4b0 @ 14006e4b0
+  -> AI_Walk_Behavior_14006e4e0 @ 14006e4e0
+  -> AI_Walk_Behavior_14006e5a0 @ 14006e5a0
+  -> AI_Walk_Behavior_14006e5d0 @ 14006e5d0
+  -> AI_Walk_Behavior_14006e600 @ 14006e600
+  -> AI_Walk_Behavior_14006e630 @ 14006e630
+  -> AI_Walk_Behavior_14006e300 @ 14006e300
+  -> AI_Walk_Behavior_14006e330 @ 14006e330
+  -> AI_Walk_Behavior_14006e2a0 @ 14006e2a0
+  -> AI_Walk_Behavior_14006e2d0 @ 14006e2d0
+  -> AI_Walk_Behavior_14006e1e0 @ 14006e1e0
+  -> AI_Walk_Behavior_14006e270 @ 14006e270
+  -> AI_Walk_Behavior_14006e360 @ 14006e360
+  -> AI_Walk_Behavior_14006e390 @ 14006e390
+  -> AI_Walk_Behavior_14006e210 @ 14006e210
+  -> AI_Walk_Behavior_14006e240 @ 14006e240
+
+========================================
+PERCEPTION/AWARENESS
+========================================
+
+String: 'perception'
+  -> NOT FOUND
+
+String: 'sight'
+  -> NOT FOUND
+
+String: 'sense'
+  Functions found: 1
+  -> AI_Sensing @ 140afbbc0
+
+String: 'spot'
+  Functions found: 1
+  -> AI_Spotting_System @ 14055b810
+
+String: 'detect'
+  Functions found: 4
+  -> AI_Detection_System @ 1400483c0
+  -> AI_Detection_System_140048420 @ 140048420
+  -> AI_Detection_System_140867e90 @ 140867e90
+  -> AI_Enemy_Tracking_1409e1520 @ 1409e1520
+
+String: 'enemy'
+  Functions found: 21
+  -> AI_Enemy_Tracking @ 1400ef1f0
+  -> AI_Enemy_Tracking_140107a90 @ 140107a90
+  -> AI_Enemy_Tracking_14042f750 @ 14042f750
+  -> AI_Enemy_Tracking_140ac2b80 @ 140ac2b80
+  -> AI_Enemy_Tracking_140752c10 @ 140752c10
+  -> AI_Enemy_Tracking_1409114d0 @ 1409114d0
+  -> AI_Enemy_Tracking_140cee250 @ 140cee250
+  -> AI_Enemy_Tracking_140a49a30 @ 140a49a30
+  -> AI_Enemy_Tracking_140a45ae0 @ 140a45ae0
+  -> AI_Enemy_Tracking_140ac2d70 @ 140ac2d70
+  -> AI_Enemy_Tracking_140902540 @ 140902540
+  -> AI_Enemy_Tracking_140901810 @ 140901810
+  -> AI_Enemy_Tracking_1409e1520 @ 1409e1520
+  -> AI_Enemy_Tracking_140901740 @ 140901740
+  -> AI_Enemy_Tracking_1400a17f0 @ 1400a17f0
+  -> AI_Team_Coordination_14051c270 @ 14051c270
+  -> AI_Enemy_Tracking_1408c27a0 @ 1408c27a0
+  -> AI_Enemy_Tracking_140932d70 @ 140932d70
+  -> AI_Enemy_Tracking_14093a260 @ 14093a260
+  -> AI_Enemy_Tracking_140937f60 @ 140937f60
+  -> AI_Team_Coordination_140c184d0 @ 140c184d0
+
+String: 'aware'
+  -> NOT FOUND
+
+String: 'hear'
+  -> NOT FOUND
+
+String: 'threat'
+  Functions found: 2
+  -> AI_Threat_Assessment @ 140383e20
+  -> AI_Threat_Assessment_140b8cb60 @ 140b8cb60
+
+========================================
+COORDINATION
+========================================
+
+String: 'communicate'
+  -> NOT FOUND
+
+String: 'coordination'
+  -> NOT FOUND
+
+String: 'group'
+  Functions found: 9
+  -> AI_Group_Behavior @ 1409ccbb0
+  -> AI_Group_Behavior_1409cd000 @ 1409cd000
+  -> AI_Group_Behavior_14073c4f0 @ 14073c4f0
+  -> AI_Group_Behavior_1407bba90 @ 1407bba90
+  -> AI_Group_Behavior_140d15540 @ 140d15540
+  -> AI_Group_Behavior_140909c10 @ 140909c10
+  -> AI_Group_Behavior_1409cd390 @ 1409cd390
+  -> AI_Group_Behavior_140a8b180 @ 140a8b180
+  -> AI_Group_Behavior_140aeef70 @ 140aeef70
+
+String: 'team'
+  Functions found: 44
+  -> AI_Team_Coordination @ 140216b60
+  -> AI_Team_Coordination_140289ce0 @ 140289ce0
+  -> AI_Team_Coordination_14028f830 @ 14028f830
+  -> AI_Team_Coordination_140c16d50 @ 140c16d50
+  -> AI_Team_Coordination_140c28d20 @ 140c28d20
+  -> AI_Team_Coordination_140c410f0 @ 140c410f0
+  -> AI_Team_Coordination_1402ef630 @ 1402ef630
+  -> AI_Team_Coordination_14051c270 @ 14051c270
+  -> AI_Team_Coordination_140c3b340 @ 140c3b340
+  -> AI_Team_Coordination_14047a730 @ 14047a730
+  -> AI_Team_Coordination_140c39af0 @ 140c39af0
+  -> AI_Team_Coordination_140797110 @ 140797110
+  -> AI_Team_Coordination_1409d7410 @ 1409d7410
+  -> AI_Team_Coordination_140c367a0 @ 140c367a0
+  -> AI_Team_Coordination_140c35bf0 @ 140c35bf0
+  -> AI_Team_Coordination_140c33ae0 @ 140c33ae0
+  -> AI_Team_Coordination_140c335e0 @ 140c335e0
+  -> AI_Team_Coordination_140c33540 @ 140c33540
+  -> AI_Team_Coordination_1409d2ad0 @ 1409d2ad0
+  -> AI_Team_Coordination_140c32c20 @ 140c32c20
+  -> AI_Team_Coordination_1409d20b0 @ 1409d20b0
+  -> AI_Team_Coordination_140c320b0 @ 140c320b0
+  -> AI_Team_Coordination_140c31990 @ 140c31990
+  -> AI_Team_Coordination_140c31a40 @ 140c31a40
+  -> AI_Team_Coordination_140c31cb0 @ 140c31cb0
+  -> AI_Team_Coordination_140c31c50 @ 140c31c50
+  -> AI_Team_Coordination_140c31fc0 @ 140c31fc0
+  -> AI_Team_Coordination_1409f0ff0 @ 1409f0ff0
+  -> AI_Team_Coordination_1409aa310 @ 1409aa310
+  -> AI_Team_Coordination_140c27440 @ 140c27440
+  -> AI_Team_Coordination_140c40080 @ 140c40080
+  -> AI_Team_Coordination_1403a06e0 @ 1403a06e0
+  -> AI_Team_Coordination_140b93090 @ 140b93090
+  -> AI_Team_Coordination_1409d8550 @ 1409d8550
+  -> AI_Team_Coordination_14041da50 @ 14041da50
+  -> AI_Team_Coordination_140c184d0 @ 140c184d0
+  -> AI_Team_Coordination_140c3bbe0 @ 140c3bbe0
+  -> AI_Team_Coordination_140c49420 @ 140c49420
+  -> AI_Team_Coordination_140c431e0 @ 140c431e0
+  -> AI_Team_Coordination_140c432c0 @ 140c432c0
+  -> AI_Team_Coordination_140c420c0 @ 140c420c0
+  -> AI_Team_Coordination_140c42010 @ 140c42010
+  -> AI_Team_Coordination_140ce9d60 @ 140ce9d60
+  -> AI_Team_Coordination_140d09660 @ 140d09660
+
+========================================
+GOAL/PLANNING
+========================================
+
+String: 'objective'
+  Functions found: 23
+  -> AI_Objective_Handler @ 1401dd220
+  -> AI_Objective_Handler_140090840 @ 140090840
+  -> AI_Objective_Handler_140b89ec0 @ 140b89ec0
+  -> AI_Objective_Handler_140bb4780 @ 140bb4780
+  -> AI_Objective_Handler_140bb3900 @ 140bb3900
+  -> AI_Objective_Handler_1409ad7b0 @ 1409ad7b0
+  -> AI_Objective_Handler_1409ad7c0 @ 1409ad7c0
+  -> AI_Objective_Handler_14007baf0 @ 14007baf0
+  -> AI_Objective_Handler_140a548a0 @ 140a548a0
+  -> AI_Objective_Handler_140a55c20 @ 140a55c20
+  -> AI_Objective_Handler_140bbea30 @ 140bbea30
+  -> AI_Objective_Handler_140bbdb40 @ 140bbdb40
+  -> AI_Objective_Handler_140090b20 @ 140090b20
+  -> AI_Objective_Handler_140b37320 @ 140b37320
+  -> AI_Objective_Handler_140b8c910 @ 140b8c910
+  -> AI_Objective_Handler_140bb4c20 @ 140bb4c20
+  -> AI_Objective_Handler_140bb7d90 @ 140bb7d90
+  -> AI_Objective_Handler_1400905d0 @ 1400905d0
+  -> AI_Objective_Handler_140b89700 @ 140b89700
+  -> AI_Objective_Handler_140b892f0 @ 140b892f0
+  -> AI_Objective_Handler_140b8a040 @ 140b8a040
+  -> AI_Objective_Handler_140b8b160 @ 140b8b160
+  -> AI_Objective_Handler_140b8bc40 @ 140b8bc40
+
+String: 'navigation'
+  Functions found: 1
+  -> AI_Navigation_System @ 14007dd70
+
+String: 'plan'
+  Functions found: 2
+  -> AI_Planning_System @ 1400ae650
+  -> AI_Planning_System_1405bcd60 @ 1405bcd60
+
+String: 'goal'
+  -> NOT FOUND
+
+String: 'task'
+  Functions found: 8
+  -> AI_Task_System @ 1401c9720
+  -> AI_Task_System_140865390 @ 140865390
+  -> AI_Task_System_1409aeaf0 @ 1409aeaf0
+  -> AI_Task_System_1409aeb00 @ 1409aeb00
+  -> AI_Task_System_1409e8530 @ 1409e8530
+  -> AI_Task_System_1409832f0 @ 1409832f0
+  -> AI_Task_System_1409837e0 @ 1409837e0
+  -> AI_Task_System_140984bf0 @ 140984bf0
+
+String: 'strategy'
+  -> NOT FOUND
+

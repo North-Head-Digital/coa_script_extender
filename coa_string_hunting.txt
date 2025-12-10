@@ -1,0 +1,340 @@
+# Call to Arms: String Hunting Results
+# Found configuration/property strings by category
+
+========================================
+CATEGORY: WEAPONS
+========================================
+
+String: "damage" (57 occurrences)
+  Context: "damage"
+  Context: "damage_indicator/indicator_scale"
+  Context: "damage_per_second"
+  Context: "damage_table"
+  Context: "damage_table/distance"
+  Context: "damage_table/health"
+  Context: "damage/bullet"
+  Context: "damage_indicator/max_alpha"
+  Context: "damage_messages"
+  Context: "damage_table/projectile"
+
+String: "explosive" (4 occurrences)
+  Context: "explosive"
+  Context: "explosive_amount"
+  Context: "explosives"
+  Context: "explosive_treshold"
+
+String: "reload" (58 occurrences)
+  Context: "reloadInteractions"
+  Context: "reload"
+  Context: "reload/"
+  Context: "reloadGrassBitmaps"
+  Context: "reload interactions"
+  Context: "reloadMarketSettings"
+  Context: "reload sounds"
+  Context: "reload_time"
+  Context: "reloaded?"
+  Context: "reloaded"
+
+String: "ammo" (41 occurrences)
+  Context: "ammo_count"
+  Context: "ammo_00"
+  Context: "ammo_01"
+  Context: "ammo"
+  Context: "ammodepot"
+  Context: "ammo?G?"
+  Context: "ammo_type"
+  Context: "ammo/"
+  Context: "ammoD?d$4?M???????"
+  Context: "ammo_param_"
+
+String: "recoil" (10 occurrences)
+  Context: "recoil"
+  Context: "recoil_zoom"
+
+String: "penetration" (1 occurrences)
+  Context: "penetration"
+
+String: "accuracy" (12 occurrences)
+  Context: "accuracy/bullet"
+  Context: "accuracy??E?H?M??E?"
+  Context: "accuracy/distance"
+  Context: "accuracy?D$("
+  Context: "accuracy_circle"
+  Context: "accuracy"
+  Context: "accuracy/spread"
+
+String: "range" (39 occurrences)
+  Context: "range in a {} expression."
+  Context: "range (1..10]"
+  Context: "range_accuracy/spread"
+  Context: "ranges"
+  Context: "ranges for min & max values (%1%), use constant instead"
+  Context: "range"
+  Context: "range_accuracy"
+  Context: "range_accuracy/distance"
+  Context: "range [0, 99])"
+  Context: "range_box"
+
+String: "fire" (101 occurrences)
+  Context: "fire_rifle_up"
+  Context: "fire_rifle_down"
+  Context: "fire_mode"
+  Context: "fire "
+  Context: "fireSound '%2%' signal"
+  Context: "fireSoundClose sound '%1%' signal is different from fireSound '%"
+  Context: "fire"
+  Context: "fire_rifle"
+  Context: "fireH??$?"
+  Context: "fire_mixed"
+
+String: "velocity" (7 occurrences)
+  Context: "velocity"
+  Context: "velocity - %g"
+
+String: "spread" (5 occurrences)
+  Context: "spread"
+  Context: "spread_items"
+
+========================================
+CATEGORY: VEHICLES
+========================================
+
+String: "brake" (2 occurrences)
+  Context: "brake"
+  Context: "brake "
+
+String: "transmission" (5 occurrences)
+  Context: "transmissions"
+
+String: "engine" (11 occurrences)
+  Context: "engine..."
+  Context: "engine_stopped"
+  Context: "engine"
+  Context: "engine2"
+  Context: "engine1"
+  Context: "engine_started"
+  Context: "engine "
+  Context: "engine adapter enum."
+  Context: "engineer"
+
+String: "fuel" (14 occurrences)
+  Context: "fuel:%g(%d)"
+  Context: "fuel?????t?I????"
+  Context: "fuel"
+  Context: "fuelH?E??"
+  Context: "fuel_hint"
+  Context: "fuel?????H??L?E?H??????H?U?H???v1H?M?H??H??H??"
+  Context: "fuel/range"
+  Context: "fuel/consumption"
+  Context: "fuel_color"
+
+String: "rotation" (1 occurrences)
+  Context: "rotation"
+
+String: "turret" (5 occurrences)
+  Context: "turret gun"
+  Context: "turret"
+
+String: "speed" (59 occurrences)
+  Context: "speed in ik-bone "%1%""
+  Context: "speed.rmsValue"
+  Context: "speed_mps"
+  Context: "speed_selector"
+  Context: "speed_third_person"
+  Context: "speed_factor"
+  Context: "speed is invalid!"
+  Context: "speed"
+  Context: "speed.deviation"
+  Context: "speed to %d"
+
+String: "suspension" (3 occurrences)
+  Context: "suspensionAngleSpeed"
+  Context: "suspensionPositionSpeed"
+  Context: "suspension"
+
+========================================
+CATEGORY: ARMOR
+========================================
+
+String: "side" (54 occurrences)
+  Context: "side of standard location!"
+  Context: "side"
+  Context: "side-left"
+  Context: "sides"
+  Context: "side-right"
+  Context: "side quant : "%1%""
+  Context: "side - %dx%d px"
+  Context: "side of quant"
+  Context: "side: "
+  Context: "side: %1%"
+
+String: "armor" (31 occurrences)
+  Context: "armor"
+  Context: "armor_damage_modifier"
+  Context: "armor_turret"
+  Context: "armored"
+  Context: "armor_hull"
+  Context: "armored_car light medium heavy"
+  Context: "armor_again"
+  Context: "armored_car"
+  Context: "armor_shield"
+  Context: "armor_"
+
+String: "top" (99 occurrences)
+  Context: "top_right"
+  Context: "topright????{>?H???{>??"
+  Context: "top"
+  Context: "topright????}>?H??P}>??"
+  Context: "topH??H?E??"
+  Context: "topped"
+  Context: "top_left"
+  Context: "top" a benchmark."
+  Context: "topped. Results will be printed in "
+  Context: "top for ending the one active."
+
+String: "thickness" (6 occurrences)
+  Context: "thickness = "
+  Context: "thickness for volume "%s" in entity %s"
+  Context: "thickness"
+  Context: "thickness("
+  Context: "thickness ("
+
+String: "bottom" (19 occurrences)
+  Context: "bottom_left_corner"
+  Context: "bottomleft"
+  Context: "bottom_bar_middle_area"
+  Context: "bottom: -32px;}?????????????div.returnLink {display: none;} ????"
+  Context: "bottom_right_corner"
+  Context: "bottom"
+  Context: "bottom {background-image: none; padding: 0px !important;}"
+  Context: "bottom_right"
+  Context: "bottom_left"
+  Context: "bottomright"
+
+String: "turret" (5 occurrences)
+  Context: "turret gun"
+  Context: "turret"
+
+String: "front" (31 occurrences)
+  Context: "front_default"
+  Context: "frontbar"
+  Context: "frontlines"
+  Context: "front_2"
+  Context: "front_3"
+  Context: "front_4"
+  Context: "front"
+  Context: "front_1_blast"
+  Context: "front_3_far"
+  Context: "front_1"
+
+String: "hull" (5 occurrences)
+  Context: "hull shader for wave works initialization."
+  Context: "hull shader"
+  Context: "hull"
+
+========================================
+CATEGORY: PHYSICS
+========================================
+
+String: "collision" (2 occurrences)
+  Context: "collision resolver track state"
+  Context: "collision pair, but not allocated"
+
+String: "gravity" (1 occurrences)
+  Context: "gravity"
+
+String: "mass" (5 occurrences)
+  Context: "mass_view/kg"
+  Context: "mass"
+  Context: "mass_view/ton"
+
+String: "weight" (2 occurrences)
+  Context: "weight_format"
+  Context: "weight"
+
+String: "force" (89 occurrences)
+  Context: "forcements_mp"
+  Context: "forcement"
+  Context: "forcements_tabs"
+  Context: "forcement_stage_%1%"
+  Context: "force"
+  Context: "forcements"
+  Context: "force_placement"
+  Context: "forcements_panel"
+  Context: "forcementView.xml"
+  Context: "forcementButtonView.xml"
+
+String: "drag" (9 occurrences)
+  Context: "draggable_tabpanel"
+  Context: "dragD?e?H?E??"
+  Context: "drag_panel"
+  Context: "draggabletabpanel"
+  Context: "drag?E?"
+  Context: "draggable_stackpanel"
+  Context: "drag"
+  Context: "dragArrow"
+
+========================================
+CATEGORY: UNITS
+========================================
+
+String: "detection" (1 occurrences)
+  Context: "detection"
+
+String: "visibility" (7 occurrences)
+  Context: "visibility"
+  Context: "visibility/public"
+  Context: "visibility/friends"
+  Context: "visibility/private"
+  Context: "visibility_patch"
+
+String: "stamina" (13 occurrences)
+  Context: "stamina/brightness_drop"
+  Context: "stamina"
+  Context: "stamina_hint"
+  Context: "stamina_cap"
+  Context: "stamina/low_stamina_cap"
+  Context: "stamina_regeneration"
+
+String: "veterancy" (28 occurrences)
+  Context: "veterancy/cannon"
+  Context: "veterancy%s"
+  Context: "veterancy"
+  Context: "veterancy/stamina"
+  Context: "veterancy/health"
+  Context: "veterancy/stamina_regeneration"
+  Context: "veterancy/health_regeneration"
+  Context: "veterancy/level"
+  Context: "veterancy/tank"
+  Context: "veterancy/vehicle"
+
+String: "suppression" (2 occurrences)
+  Context: "suppression_fire@Action@Interface@@"
+  Context: "suppression_fire"
+
+String: "health" (41 occurrences)
+  Context: "health_low"
+  Context: "health/low_health_cap"
+  Context: "health/pulse_constant"
+  Context: "health"
+  Context: "health_points"
+  Context: "health_damage"
+  Context: "health_cap"
+  Context: "health/tone_color"
+  Context: "health_regeneration"
+  Context: "health_hint"
+
+String: "morale" (1 occurrences)
+  Context: "morale"
+
+String: "experience" (7 occurrences)
+  Context: "experience_fin"
+  Context: "experience_usa"
+  Context: "experience_ger"
+  Context: "experience"
+  Context: "experience_eng"
+  Context: "experience_rus"
+
+String: "panic" (1 occurrences)
+  Context: "panic"
+
