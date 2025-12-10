@@ -35,14 +35,15 @@ public class FindLuaCreateTable extends GhidraScript {
         
         // Find all callers of luaH_new
         ReferenceManager refMgr = currentProgram.getReferenceManager();
-        Reference[] refs = refMgr.getReferencesTo(luaHNewAddr);
+        ReferenceIterator refIter = refMgr.getReferencesTo(luaHNewAddr);
         
         println("Functions that call luaH_new:");
         println("-".repeat(60));
         
         List<Function> candidates = new ArrayList<>();
         
-        for (Reference ref : refs) {
+        while (refIter.hasNext()) {
+            Reference ref = refIter.next();
             if (!ref.getReferenceType().isCall()) continue;
             
             Function caller = getFunctionContaining(ref.getFromAddress());

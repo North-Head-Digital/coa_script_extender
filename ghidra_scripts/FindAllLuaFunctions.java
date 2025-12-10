@@ -196,9 +196,10 @@ public class FindAllLuaFunctions extends GhidraScript {
             Address strAddr = entry.getValue();
             
             // Find references to this string
-            Reference[] refs = refMgr.getReferencesTo(strAddr);
+            ReferenceIterator refIter = refMgr.getReferencesTo(strAddr);
             
-            for (Reference ref : refs) {
+            while (refIter.hasNext()) {
+                Reference ref = refIter.next();
                 Address fromAddr = ref.getFromAddress();
                 Function func = funcMgr.getFunctionContaining(fromAddr);
                 
@@ -363,10 +364,11 @@ public class FindAllLuaFunctions extends GhidraScript {
             ReferenceManager refMgr = currentProgram.getReferenceManager();
             FunctionManager funcMgr = currentProgram.getFunctionManager();
             
-            Reference[] refs = refMgr.getReferencesTo(luaHNew.address);
+            ReferenceIterator refIter = refMgr.getReferencesTo(luaHNew.address);
             output.println("  Functions calling luaH_new:");
             
-            for (Reference ref : refs) {
+            while (refIter.hasNext()) {
+                Reference ref = refIter.next();
                 if (ref.getReferenceType().isCall()) {
                     Function caller = funcMgr.getFunctionContaining(ref.getFromAddress());
                     if (caller != null) {
