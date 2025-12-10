@@ -366,25 +366,15 @@ static void Hooked_lua_pushcclosure(lua_State* L, void* fn, int n) {
         g_LuaState = L;
     }
     
-    // Call original - must complete before we do anything
+    // Call original FIRST - game continues normally
     g_OriginalPushCClosure(L, fn, n);
     
-    // After 10+ closures have been registered (Lua is initialized),
-    // register our functions. We do this after the original call completes.
-    // The key is that WE ARE ON THE GAME'S MAIN THREAD here.
-    if (g_LuaState && !g_COAExtenderRegistered && g_PushCClosureCount == 10) {
-        Log("[LuaBridge] Registering COA_Extender after %d closures...", g_PushCClosureCount);
-        
-        // Check stack state
-        int top = p_lua_gettop ? p_lua_gettop(g_LuaState) : -1;
-        Log("[LuaBridge] Stack top before registration: %d", top);
-        
-        RegisterFunctions(g_LuaState);
-        g_COAExtenderRegistered = true;
-        
-        int newTop = p_lua_gettop ? p_lua_gettop(g_LuaState) : -1;
-        Log("[LuaBridge] Stack top after registration: %d", newTop);
-        Log("[LuaBridge] COA_Extender registered successfully!");
+    // We will NOT register during game's initialization!
+    // Instead, set a flag and let a background thread do it later
+    // when the game is fully initialized and idle
+    if (g_LuaState && !g_COAExtenderRegistered && g_PushCClosureCount >= 50) {
+        // After many closures, set flag for background registration
+        g_ReadyToRegister = true;
     }
 }
 
@@ -397,7 +387,7 @@ static int Hooked_lua_pcall(lua_State* L, int nargs, int nresults, int errfunc) 
     g_PcallCount++;
     
     // Only log first few calls to avoid spam
-    if (g_PcallCount <= 5) {
+    if (g_PcallCount <= 10) {
         Log("[LuaBridge] lua_pcall #%d called! lua_State=0x%p, nargs=%d, nresults=%d", 
             g_PcallCount, L, nargs, nresults);
     }
@@ -408,12 +398,33 @@ static int Hooked_lua_pcall(lua_State* L, int nargs, int nresults, int errfunc) 
         g_LuaState = L;
     }
     
+    // SAFE REGISTRATION POINT: Register on first pcall when we have lua_State
+    // At this point, the game is executing Lua code, so Lua is fully initialized
+    // and the stack is in a known good state (about to call a function)
+    if (g_LuaState && !g_COAExtenderRegistered && g_PcallCount >= 3) {
+        Log("[LuaBridge] Safe registration point reached (pcall #%d)", g_PcallCount);
+        
+        // Save current stack state
+        int savedTop = p_lua_gettop ? p_lua_gettop(L) : 0;
+        Log("[LuaBridge] Stack top before registration: %d", savedTop);
+        
+        // Register our functions
+        RegisterFunctions(L);
+        g_COAExtenderRegistered = true;
+        
+        // Verify stack is restored
+        int newTop = p_lua_gettop ? p_lua_gettop(L) : 0;
+        Log("[LuaBridge] Stack top after registration: %d (expected: %d)", newTop, savedTop);
+        
+        // Restore stack if needed (shouldn't be necessary but safety first)
+        if (p_lua_settop && newTop != savedTop) {
+            Log("[LuaBridge] WARNING: Stack mismatch, restoring...");
+            p_lua_settop(L, savedTop);
+        }
+    }
+    
     // Call original pcall
-    int result = g_OriginalPcall(L, nargs, nresults, errfunc);
-    
-    // NOTE: This hook is currently disabled, registration happens via lua_pushcclosure
-    
-    return result;
+    return g_OriginalPcall(L, nargs, nresults, errfunc);
 }
 
 // === APPROACH 2: Hook lua_newstate to capture lua_State* when created ===
@@ -655,9 +666,8 @@ static bool InstallLuaHooks() {
     
     Log("[LuaBridge] Hook installation complete (pushcclosure only)");
     
-    // DISABLED: These hooks caused crashes or didn't fire
-    #if 0
-    // lua_pcall - never fired during testing
+    // ENABLED: lua_pcall hook for safe deferred registration
+    // lua_pcall - register our functions when game starts calling Lua scripts
     void* pcall_target = (void*)(base + LUA_PCALL_OFFSET);
     Log("[LuaBridge] Installing hook at lua_pcall (0x%p)", pcall_target);
     
@@ -670,10 +680,10 @@ static bool InstallLuaHooks() {
             Log("[LuaBridge] Failed to enable lua_pcall hook: %d", status);
         } else {
             Log("[LuaBridge] lua_pcall hook installed successfully");
-            success = true;
         }
     }
-    #endif
+    
+    Log("[LuaBridge] Hook installation complete (minimal mode - pcall only)");
     
     // DISABLED: These hooks may interfere with game initialization
     #if 0
