@@ -17,6 +17,11 @@
 |----------|--------|-----|-----------|-------|
 | `lua_pushcclosure` | `0x00D6AB20` | `0x140D6AB20` | `void(L, fn, n)` | ✅ Verified - creates C closures |
 | `lua_createtable` | `0x00D69D40` | `0x140D69D40` | `void(L, narr, nrec)` | ✅ Verified via FindLuaCreateTable.java (score 80/100) |
+| `lua_setfield` | `0x00D76D50` | `0x140D76D50` | `void(L, idx, k)` | ✅ Verified - called by lua_setglobal |
+| `lua_setglobal` | `0x00D773F0` | `0x140D773F0` | `void(L, name)` | ✅ Verified - wrapper around setfield, 274 bytes |
+| `lua_gettop` | `0x00D6FD10` | `0x140D6FD10` | `int(L)` | ✅ Verified - 16 bytes, returns stack top |
+| `lua_pushnumber` | `0x00D7A470` | `0x140D7A470` | `void(L, n)` | ✅ Verified - uses XMM0, 50 bytes |
+| `lua_pushinteger` | `0x00D7A440` | `0x140D7A440` | `void(L, n)` | ✅ Verified - uses ECX, 48 bytes |
 | `luaV_execute` | `0x00D7B070` | `0x140D7B070` | `void(L)` | ✅ Verified - main VM interpreter, 4826 bytes |
 | `lua_resume` | `0x00D71420` | `0x140D71420` | `int(L, from, nargs)` | ✅ Verified - "cannot resume" strings |
 | `luaH_new` | `0x00D77210` | `0x140D77210` | `Table*(L)` | ✅ Verified - creates table object |
@@ -35,13 +40,14 @@
 
 | Function | Guessed Offset | Status |
 |----------|----------------|--------|
-| `lua_setfield` | `0x00D76D50` | Unverified |
-| `lua_setglobal` | `0x00D773F0` | Unverified |
-| `lua_gettop` | `0x00D6FD10` | Unverified |
 | `lua_settop` | `0x00D6F090` | Unverified |
 | `lua_type` | `0x00D6F630` | Unverified |
 | `lua_pushstring` | `0x00D7AC60` | Unverified |
 | `lua_pcall` | `0x00D712A0` | Unverified - might be lua_pcallk |
+| `lua_pushboolean` | `0x00D7A4B0` | Candidate - 127 bytes |
+| `lua_toboolean` | `0x00D6F550` | Candidate - 118 bytes |
+| `lua_tonumberx` | `0x00D6F3D0` | Candidate - 380 bytes |
+| `lua_tolstring` | `0x00D7A290` | Candidate - 336 bytes |
 
 ---
 
