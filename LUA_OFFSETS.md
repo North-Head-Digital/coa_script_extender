@@ -16,6 +16,7 @@
 | Function | Offset | RVA | Signature | Notes |
 |----------|--------|-----|-----------|-------|
 | `lua_pushcclosure` | `0x00D6AB20` | `0x140D6AB20` | `void(L, fn, n)` | ✅ Verified - creates C closures |
+| `lua_createtable` | `0x00D69D40` | `0x140D69D40` | `void(L, narr, nrec)` | ✅ Verified via FindLuaCreateTable.java (score 80/100) |
 | `luaV_execute` | `0x00D7B070` | `0x140D7B070` | `void(L)` | ✅ Verified - main VM interpreter, 4826 bytes |
 | `lua_resume` | `0x00D71420` | `0x140D71420` | `int(L, from, nargs)` | ✅ Verified - "cannot resume" strings |
 | `luaH_new` | `0x00D77210` | `0x140D77210` | `Table*(L)` | ✅ Verified - creates table object |
@@ -26,7 +27,7 @@
 
 | Function | Wrong Offset | Correct Info |
 |----------|--------------|--------------|
-| `lua_createtable` | `0x00D77E80` | ❌ This is `luaH_resize`! Need to find real one |
+| ~~`lua_createtable`~~ | ~~`0x00D77E80`~~ | ❌ This was `luaH_resize`! Correct: `0x00D69D40` |
 
 ---
 
@@ -34,7 +35,6 @@
 
 | Function | Guessed Offset | Status |
 |----------|----------------|--------|
-| `lua_createtable` | TBD | Need to find - calls luaH_new + pushes to stack |
 | `lua_setfield` | `0x00D76D50` | Unverified |
 | `lua_setglobal` | `0x00D773F0` | Unverified |
 | `lua_gettop` | `0x00D6FD10` | Unverified |

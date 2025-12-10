@@ -224,7 +224,9 @@ static int L_ExecuteHook(lua_State* L) {
 #define LUA_PUSHFSTRING_OFFSET      0x00D6D0C0  // lua_pushfstring
 
 // Table functions
-#define LUA_CREATETABLE_OFFSET      0x00D77E80  // lua_createtable (for lua_newtable)
+// OLD WRONG: 0x00D77E80 was luaH_resize, NOT lua_createtable!
+// NEW: 0x00D69D40 - Found via FindLuaCreateTable.java (score 80/100, 107 bytes)
+#define LUA_CREATETABLE_OFFSET      0x00D69D40  // lua_createtable - VERIFIED
 #define LUA_SETFIELD_OFFSET         0x00D76D50  // lua_setfield
 
 // Call functions
