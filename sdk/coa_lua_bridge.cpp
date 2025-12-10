@@ -354,8 +354,8 @@ static int g_PushCClosureCount = 0;
 static void Hooked_lua_pushcclosure(lua_State* L, void* fn, int n) {
     g_PushCClosureCount++;
     
-    // Log first several calls
-    if (g_PushCClosureCount <= 20) {
+    // Log first several calls and periodically after
+    if (g_PushCClosureCount <= 20 || g_PushCClosureCount == 100 || g_PushCClosureCount == 200) {
         Log("[LuaBridge] lua_pushcclosure #%d: L=0x%p, fn=0x%p, n=%d", 
             g_PushCClosureCount, L, fn, n);
     }
@@ -369,12 +369,22 @@ static void Hooked_lua_pushcclosure(lua_State* L, void* fn, int n) {
     // Call original FIRST - game continues normally
     g_OriginalPushCClosure(L, fn, n);
     
-    // We will NOT register during game's initialization!
-    // Instead, set a flag and let a background thread do it later
-    // when the game is fully initialized and idle
-    if (g_LuaState && !g_COAExtenderRegistered && g_PushCClosureCount >= 50) {
-        // After many closures, set flag for background registration
-        g_ReadyToRegister = true;
+    // After 100+ closures, Lua is definitely fully initialized
+    // Register our functions at this safe point
+    if (g_LuaState && !g_COAExtenderRegistered && g_PushCClosureCount == 100) {
+        Log("[LuaBridge] Registering COA_Extender after %d closures (safe point)...", g_PushCClosureCount);
+        
+        // Check stack state - should be back to normal after game's pushcclosure
+        int top = p_lua_gettop ? p_lua_gettop(g_LuaState) : -1;
+        Log("[LuaBridge] Stack top before registration: %d", top);
+        
+        // Register our functions
+        RegisterFunctions(g_LuaState);
+        g_COAExtenderRegistered = true;
+        
+        int newTop = p_lua_gettop ? p_lua_gettop(g_LuaState) : -1;
+        Log("[LuaBridge] Stack top after registration: %d", newTop);
+        Log("[LuaBridge] COA_Extender registered successfully!");
     }
 }
 
