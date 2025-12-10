@@ -148,10 +148,15 @@ public class AIBehaviorHunter2 extends GhidraScript {
         });
     }
 
+    // Output directory - change this to your workspace path
+    private static final String OUTPUT_DIR = "/home/darkr/coa_script_extender/ghidra_output";
+
     @Override
     public void run() throws Exception {
-        // Create output file
-        File outputFile = new File(getProgramFile().getParentFile(), "coa_ai_extended.txt");
+        // Create output file in workspace
+        File outDir = new File(OUTPUT_DIR);
+        outDir.mkdirs();
+        File outputFile = new File(outDir, "coa_ai_extended.txt");
         output = new PrintWriter(new FileWriter(outputFile));
         
         println("===========================================");
@@ -378,7 +383,7 @@ public class AIBehaviorHunter2 extends GhidraScript {
     }
     
     private void generateHookPointsFile() throws Exception {
-        File hookFile = new File(getProgramFile().getParentFile(), "coa_ai_extended_hooks.txt");
+        File hookFile = new File(OUTPUT_DIR, "coa_ai_extended_hooks.txt");
         PrintWriter hookOutput = new PrintWriter(new FileWriter(hookFile));
         
         hookOutput.println("# Extended AI Hook Points");

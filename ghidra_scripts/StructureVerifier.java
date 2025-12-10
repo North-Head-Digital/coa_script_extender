@@ -56,9 +56,14 @@ public class StructureVerifier extends GhidraScript {
         0x01dd220,  // AI_Objective_Handler
     };
 
+    // Output directory - change this to your workspace path
+    private static final String OUTPUT_DIR = "/home/darkr/coa_script_extender/ghidra_output";
+
     @Override
     public void run() throws Exception {
-        File outputFile = new File(getProgramFile().getParentFile(), "coa_structure_analysis.txt");
+        File outDir = new File(OUTPUT_DIR);
+        outDir.mkdirs();
+        File outputFile = new File(outDir, "coa_structure_analysis.txt");
         output = new PrintWriter(new FileWriter(outputFile));
         
         println("===========================================");
@@ -273,7 +278,7 @@ public class StructureVerifier extends GhidraScript {
     }
     
     private void generateStructureHeader() throws Exception {
-        File headerFile = new File(getProgramFile().getParentFile(), "coa_structures_refined.h");
+        File headerFile = new File(OUTPUT_DIR, "coa_structures_refined.h");
         PrintWriter header = new PrintWriter(new FileWriter(headerFile));
         
         header.println("/**");

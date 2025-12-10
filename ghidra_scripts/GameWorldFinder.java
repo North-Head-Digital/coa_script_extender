@@ -40,9 +40,14 @@ public class GameWorldFinder extends GhidraScript {
     // mov rax, [rip + offset] - common singleton getter pattern
     // lea rax, [rip + offset] - getting address of global
     
+    // Output directory - change this to your workspace path
+    private static final String OUTPUT_DIR = "/home/darkr/coa_script_extender/ghidra_output";
+
     @Override
     public void run() throws Exception {
-        File outputFile = new File(getProgramFile().getParentFile(), "coa_gameworld_candidates.txt");
+        File outDir = new File(OUTPUT_DIR);
+        outDir.mkdirs();
+        File outputFile = new File(outDir, "coa_gameworld_candidates.txt");
         output = new PrintWriter(new FileWriter(outputFile));
         
         println("===========================================");

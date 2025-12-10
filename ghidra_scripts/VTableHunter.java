@@ -33,9 +33,14 @@ public class VTableHunter extends GhidraScript {
         Set<String> hints = new HashSet<>();
     }
 
+    // Output directory - change this to your workspace path
+    private static final String OUTPUT_DIR = "/home/darkr/coa_script_extender/ghidra_output";
+
     @Override
     public void run() throws Exception {
-        File outputFile = new File(getProgramFile().getParentFile(), "coa_vtables.txt");
+        File outDir = new File(OUTPUT_DIR);
+        outDir.mkdirs();
+        File outputFile = new File(outDir, "coa_vtables.txt");
         output = new PrintWriter(new FileWriter(outputFile));
         
         println("===========================================");
@@ -247,7 +252,7 @@ public class VTableHunter extends GhidraScript {
     }
     
     private void generateVTableHeader() throws Exception {
-        File headerFile = new File(getProgramFile().getParentFile(), "coa_vtables.h");
+        File headerFile = new File(OUTPUT_DIR, "coa_vtables.h");
         PrintWriter header = new PrintWriter(new FileWriter(headerFile));
         
         header.println("/**");

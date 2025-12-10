@@ -32,9 +32,14 @@ public class CrossReferenceAnalyzer extends GhidraScript {
         "Damage_", "Armor_", "Attack_", "Defense_", "Morale_"
     };
 
+    // Output directory - change this to your workspace path
+    private static final String OUTPUT_DIR = "/home/darkr/coa_script_extender/ghidra_output";
+
     @Override
     public void run() throws Exception {
-        File outputFile = new File(getProgramFile().getParentFile(), "coa_xref_analysis.txt");
+        File outDir = new File(OUTPUT_DIR);
+        outDir.mkdirs();
+        File outputFile = new File(outDir, "coa_xref_analysis.txt");
         output = new PrintWriter(new FileWriter(outputFile));
         
         println("===========================================");
@@ -250,7 +255,7 @@ public class CrossReferenceAnalyzer extends GhidraScript {
     }
     
     private void generateSummary() throws Exception {
-        File summaryFile = new File(getProgramFile().getParentFile(), "coa_xref_hooks.h");
+        File summaryFile = new File(OUTPUT_DIR, "coa_xref_hooks.h");
         PrintWriter header = new PrintWriter(new FileWriter(summaryFile));
         
         header.println("/**");

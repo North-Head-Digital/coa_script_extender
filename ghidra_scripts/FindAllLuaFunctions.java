@@ -72,10 +72,15 @@ public class FindAllLuaFunctions extends GhidraScript {
         }
     }
 
+    // Output directory - change this to your workspace path
+    private static final String OUTPUT_DIR = "/home/darkr/coa_script_extender/ghidra_output";
+
     @Override
     public void run() throws Exception {
-        // Create output file
-        File outFile = new File(getProgramFile().getParentFile(), "lua_functions_found.txt");
+        // Create output file in workspace
+        File outDir = new File(OUTPUT_DIR);
+        outDir.mkdirs();
+        File outFile = new File(outDir, "lua_functions_found.txt");
         output = new PrintWriter(new FileWriter(outFile));
         
         println("=== COA Script Extender - Lua Function Finder ===");
