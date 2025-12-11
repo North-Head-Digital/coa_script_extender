@@ -173,25 +173,29 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved) {
 // Using __declspec(naked) and inline asm for x86, or direct call for x64
 
 #ifdef _WIN64
-// 64-bit: Use direct function calls
+// 64-bit: Use direct function calls with NULL checks
 
 extern "C" __declspec(dllexport) BOOL WINAPI GetFileVersionInfoA(LPCSTR lptstrFilename, DWORD dwHandle, DWORD dwLen, LPVOID lpData) {
     typedef BOOL(WINAPI* Func)(LPCSTR, DWORD, DWORD, LPVOID);
+    if (!p_GetFileVersionInfoA) return FALSE;
     return ((Func)p_GetFileVersionInfoA)(lptstrFilename, dwHandle, dwLen, lpData);
 }
 
 extern "C" __declspec(dllexport) BOOL WINAPI GetFileVersionInfoW(LPCWSTR lptstrFilename, DWORD dwHandle, DWORD dwLen, LPVOID lpData) {
     typedef BOOL(WINAPI* Func)(LPCWSTR, DWORD, DWORD, LPVOID);
+    if (!p_GetFileVersionInfoW) return FALSE;
     return ((Func)p_GetFileVersionInfoW)(lptstrFilename, dwHandle, dwLen, lpData);
 }
 
 extern "C" __declspec(dllexport) DWORD WINAPI GetFileVersionInfoSizeA(LPCSTR lptstrFilename, LPDWORD lpdwHandle) {
     typedef DWORD(WINAPI* Func)(LPCSTR, LPDWORD);
+    if (!p_GetFileVersionInfoSizeA) return 0;
     return ((Func)p_GetFileVersionInfoSizeA)(lptstrFilename, lpdwHandle);
 }
 
 extern "C" __declspec(dllexport) DWORD WINAPI GetFileVersionInfoSizeW(LPCWSTR lptstrFilename, LPDWORD lpdwHandle) {
     typedef DWORD(WINAPI* Func)(LPCWSTR, LPDWORD);
+    if (!p_GetFileVersionInfoSizeW) return 0;
     return ((Func)p_GetFileVersionInfoSizeW)(lptstrFilename, lpdwHandle);
 }
 
@@ -221,11 +225,13 @@ extern "C" __declspec(dllexport) DWORD WINAPI GetFileVersionInfoSizeExW(DWORD dw
 
 extern "C" __declspec(dllexport) BOOL WINAPI VerQueryValueA(LPCVOID pBlock, LPCSTR lpSubBlock, LPVOID* lplpBuffer, PUINT puLen) {
     typedef BOOL(WINAPI* Func)(LPCVOID, LPCSTR, LPVOID*, PUINT);
+    if (!p_VerQueryValueA) return FALSE;
     return ((Func)p_VerQueryValueA)(pBlock, lpSubBlock, lplpBuffer, puLen);
 }
 
 extern "C" __declspec(dllexport) BOOL WINAPI VerQueryValueW(LPCVOID pBlock, LPCWSTR lpSubBlock, LPVOID* lplpBuffer, PUINT puLen) {
     typedef BOOL(WINAPI* Func)(LPCVOID, LPCWSTR, LPVOID*, PUINT);
+    if (!p_VerQueryValueW) return FALSE;
     return ((Func)p_VerQueryValueW)(pBlock, lpSubBlock, lplpBuffer, puLen);
 }
 

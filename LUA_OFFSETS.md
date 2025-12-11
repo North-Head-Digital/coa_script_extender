@@ -7,97 +7,54 @@
 - **Base Address**: 0x140000000
 - **Lua Version**: 5.2 (statically linked)
 
----
+## Status: ✅ WORKING
 
-## VERIFIED Functions (via Ghidra reverse engineering)
-
-### Core Lua API
-
-| Function | Offset | RVA | Signature | Notes |
-|----------|--------|-----|-----------|-------|
-| `lua_pushcclosure` | `0x00D6AB20` | `0x140D6AB20` | `void(L, fn, n)` | ✅ Verified - creates C closures |
-| `lua_createtable` | `0x00D69D40` | `0x140D69D40` | `void(L, narr, nrec)` | ✅ Verified via FindLuaCreateTable.java (score 80/100) |
-| `lua_setfield` | `0x00D76D50` | `0x140D76D50` | `void(L, idx, k)` | ✅ Verified - called by lua_setglobal |
-| `lua_setglobal` | `0x00D773F0` | `0x140D773F0` | `void(L, name)` | ✅ Verified - wrapper around setfield, 274 bytes |
-| `lua_gettop` | `0x00D6FD10` | `0x140D6FD10` | `int(L)` | ✅ Verified - 16 bytes, returns stack top |
-| `lua_pushnumber` | `0x00D7A470` | `0x140D7A470` | `void(L, n)` | ✅ Verified - uses XMM0, 50 bytes |
-| `lua_pushinteger` | `0x00D7A440` | `0x140D7A440` | `void(L, n)` | ✅ Verified - uses ECX, 48 bytes |
-| `luaV_execute` | `0x00D7B070` | `0x140D7B070` | `void(L)` | ✅ Verified - main VM interpreter, 4826 bytes |
-| `lua_resume` | `0x00D71420` | `0x140D71420` | `int(L, from, nargs)` | ✅ Verified - "cannot resume" strings |
-| `luaH_new` | `0x00D77210` | `0x140D77210` | `Table*(L)` | ✅ Verified - creates table object |
-| `luaH_resize` | `0x00D77E80` | `0x140D77E80` | `void(L, t, nasize, nhsize)` | ✅ Verified - "table overflow" string |
-| `luaL_setfuncs` | `0x00D6E580` | `0x140D6E580` | `void(L, l, nup)` | ✅ Verified - registers function array |
-
-### WRONG Offsets (DO NOT USE)
-
-| Function | Wrong Offset | Correct Info |
-|----------|--------------|--------------|
-| ~~`lua_createtable`~~ | ~~`0x00D77E80`~~ | ❌ This was `luaH_resize`! Correct: `0x00D69D40` |
+The Lua bridge is fully operational. `COA_Extender` table successfully registers in `_G` and functions can be called from Lua scripts.
 
 ---
 
-## UNVERIFIED Functions (need Ghidra verification)
+## VERIFIED Functions (Currently Used)
 
-| Function | Guessed Offset | Status |
-|----------|----------------|--------|
-| `lua_settop` | `0x00D6F090` | Unverified |
-| `lua_type` | `0x00D6F630` | Unverified |
-| `lua_pushstring` | `0x00D7AC60` | Unverified |
-| `lua_pcall` | `0x00D712A0` | Unverified - might be lua_pcallk |
-| `lua_pushboolean` | `0x00D7A4B0` | Candidate - 127 bytes |
-| `lua_toboolean` | `0x00D6F550` | Candidate - 118 bytes |
-| `lua_tonumberx` | `0x00D6F3D0` | Candidate - 380 bytes |
-| `lua_tolstring` | `0x00D7A290` | Candidate - 336 bytes |
+| Function | Offset | RVA | Status |
+|----------|--------|-----|--------|
+| `lua_pushcclosure` | `0x00D6AB20` | `0x140D6AB20` | ✅ Hooked for lua_State capture |
+| `lua_createtable` | `0x00D69D40` | `0x140D69D40` | ✅ Working - creates tables |
+| `lua_setfield` | `0x00D6B670` | `0x140D6B670` | ✅ Working - sets table fields |
+| `lua_settop` | `0x00D6B9B0` | `0x140D6B9B0` | ✅ Working - stack manipulation |
+| `lua_gettop` | `0x00D6FD10` | `0x140D6FD10` | ✅ Working - gets stack top |
+| `lua_rawgeti` | `0x00D6B0B0` | `0x140D6B0B0` | ✅ Working - registry access |
+| `luaL_setfuncs` | `0x00D6E580` | `0x140D6E580` | ✅ Working - bulk function registration |
+| `lua_pushstring` | `0x00D7AC60` | `0x140D7AC60` | ✅ Working |
+| `lua_pushnumber` | `0x00D7A470` | `0x140D7A470` | ✅ Working |
+| `lua_pushinteger` | `0x00D7A440` | `0x140D7A440` | ✅ Working |
+| `lua_pushboolean` | `0x00D7A4B0` | `0x140D7A4B0` | ✅ Working |
+| `lua_toboolean` | `0x00D6F550` | `0x140D6F550` | ✅ Working |
+| `lua_tonumberx` | `0x00D6F3D0` | `0x140D6F3D0` | ✅ Working |
+| `lua_tolstring` | `0x00D7A290` | `0x140D7A290` | ✅ Working |
+| `lua_type` | `0x00D6F630` | `0x140D6F630` | ✅ Working |
+| `lua_pcall` | `0x00D712A0` | `0x140D712A0` | ✅ Hooked |
 
----
+## Internal Functions (Reference Only)
 
-## String References Found
+| Function | Offset | Notes |
+|----------|--------|-------|
+| `luaH_new` | `0x00D77210` | Internal - creates Table object |
+| `luaH_resize` | `0x00D77E80` | Internal - resizes hash tables |
+| `luaV_execute` | `0x00D7B070` | VM interpreter (4826 bytes) |
+| `lua_resume` | `0x00D71420` | Coroutine resume |
 
-| String | Address | Used By |
-|--------|---------|---------|
-| `"too many upvalues"` | `0x1411372a8` | `luaL_setfuncs` (error check) |
-| `"stack overflow (%s)"` | `0x1411371a0` | `luaL_setfuncs` |
-| `"C stack overflow"` | `0x141137xxx` | `lua_resume` |
-| `"cannot resume non-suspended coroutine"` | `0x141137xxx` | `lua_resume` |
-| `"cannot resume dead coroutine"` | `0x141137xxx` | `lua_resume` |
-| `"table overflow"` | `0x141138xxx` | `luaH_resize` |
-| `"upvalue"` | `0x1411382e8` | debug functions |
-| `"getupvalue"` | `0x141139800` | debug.getupvalue |
-| `"setupvalue"` | `0x141139858` | debug.setupvalue |
-| `"invalid upvalue index"` | `0x141139998` | debug functions |
+## Historical Notes
 
----
-
-## Current Issue
-
-We can hook `lua_pushcclosure` and capture `lua_State*` successfully, but when we try to call `lua_createtable` to register our `COA_Extender` table, the game crashes.
-
-**Crash Details:**
-- RIP: `0x140d77f0b` (inside luaH_resize at `0x140d77e80`)
-- Exception: `EXCEPTION_ACCESS_VIOLATION write at 0x00000020`
-- This means we're calling the wrong function - `luaH_resize` expects a `Table*` as second param, not creating one
-
-**Solution Needed:**
-Find the real `lua_createtable` which should:
-1. Take signature `(lua_State* L, int narray, int nrec)`
-2. Call `luaH_new` internally
-3. Push the new table onto the Lua stack
+The original `lua_createtable` offset was incorrectly identified as `0x00D77E80`, which is actually `luaH_resize`. This caused crashes when trying to register tables. The correct offset `0x00D69D40` was found using `FindLuaCreateTable.java`.
 
 ---
 
-## Ghidra Analysis Tips
+## Constants
 
-### Finding Lua Functions
-1. Search for error message strings (e.g., "stack overflow", "too many upvalues")
-2. Find references to those strings
-3. The referencing function is usually the Lua API function
-
-### Signature Patterns
-- `lua_State*` is always first parameter
-- `lua_State` has `top` pointer at offset `+0x10`
-- Functions that push values write to `L->top` then increment it
-
-### Key Internal Types
+| Constant | Value | Notes |
+|----------|-------|-------|
+| `LUA_REGISTRYINDEX` | `-1001000` | Registry pseudo-index |
+| `LUA_RIDX_GLOBALS` | `2` | `_G` is at `registry[2]` |
 - `TValue` = 16 bytes (8 byte value + 4 byte type tag + 4 padding)
 - `Table` = referenced at offsets 0x18, 0x20, 0x28 for array/hash parts
 - `CClosure` = has function pointer at offset +0x18, type tag 0x66
