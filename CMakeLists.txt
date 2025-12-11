@@ -133,11 +133,14 @@ add_library(coa_extender SHARED
     sdk/coa_loader.cpp
     sdk/coa_api.cpp
     sdk/coa_lua_bridge.cpp
+    sdk/coa_plugin_api.cpp
     sdk/coa_overlay.cpp
     sdk/coa_sdk.h
     sdk/coa_hooks.h
     sdk/coa_api.h
     sdk/coa_lua_bridge.h
+    sdk/coa_plugin_api.h
+    sdk/coa_plugin_api_internal.h
     sdk/coa_overlay.h
 )
 
@@ -226,6 +229,7 @@ install(DIRECTORY ${CMAKE_BINARY_DIR}/$<CONFIG>/mods
 install(FILES
     sdk/coa_sdk.h
     sdk/coa_hooks.h
+    sdk/coa_plugin_api.h
     DESTINATION sdk
 )
 

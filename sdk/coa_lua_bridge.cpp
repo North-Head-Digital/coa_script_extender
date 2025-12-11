@@ -7,6 +7,7 @@
 #include "coa_lua_bridge.h"
 #include "coa_sdk.h"
 #include "coa_hooks.h"
+#include "coa_plugin_api_internal.h"
 #include "MinHook.h"
 #include <windows.h>
 #include <psapi.h>
@@ -1328,6 +1329,16 @@ void RegisterFunctions(lua_State* L) {
     
     g_LuaState = L;
     Log("[LuaBridge] COA_Extender table registered successfully!");
+    
+    // Step 6: Register plugin-provided Lua functions
+    // Plugins may have registered functions during ModInit()
+    if (COA::PluginAPI::IsInitialized()) {
+        Log("[LuaBridge] Registering plugin Lua functions...");
+        COA::PluginAPI::RegisterPluginFunctionsToLua(L);
+        
+        // Dispatch LUA_LOADED event to plugins
+        COA::PluginAPI::DispatchLuaLoaded(L);
+    }
 }
 
 bool Initialize() {
